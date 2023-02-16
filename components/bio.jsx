@@ -21,10 +21,6 @@ class Bio extends Component {
 							</div>
 						
 								<style jsx global>{`
-										img {
-											max-width: 250px
-										}
-
 										.bio-grid {
 											display: grid;
 											grid-template-columns: 1fr 1fr;
@@ -78,6 +74,12 @@ class Bio extends Component {
 											height: 450px;
 											background-position: center;
 										}
+										}
+
+										@media (prefers-color-scheme: dark) { 
+											.bio-grid {
+													background-color: #15102f;
+												}
 										}
     
 							`}</style>

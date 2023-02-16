@@ -24,12 +24,20 @@ footer {
 
 @media (prefers-color-scheme: dark) {
 	body {
-		background-color: #1a1a1a;
+		background-color: #0c0920;
 		color: #fff;
 	}
 
 	.header__nav-item {
-		color: #fff;
+		color: #d7a08b;
+	}
+
+	.header__nav-item:hover {
+		color: #fff !important;
+	}
+
+	footer {
+		color: #d7a08b;
 	}
 }
 
@@ -43,3 +51,5 @@ footer {
 		opacity: 1;
 	}
 }
+
+

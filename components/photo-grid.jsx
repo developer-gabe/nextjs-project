@@ -4,40 +4,38 @@ class PhotoGrid extends Component {
 	constructor(props) { 
 		super(props);
 		this.state = {
-			photos: [],
-			cardWidth: 300,
-			cardHeight: 300,
+			photos: [
+				"/images/gallery/DSC00331.jpg",
+				"/images/gallery/DSC00075.jpg",
+				"/images/gallery/tall.jpg",
+				"/images/gallery/rmnp.jpg",
+				"/images/gallery/DSC00838.jpg",
+				"/images/gallery/DSC01000.jpg",
+				"/images/gallery/DSC01586.jpg",
+			],
 			backgroundSize: "cover",
 			backgroundRepeat: "no-repeat",
-			backgroundPosition: "center",
-			startIndex: 0,
-			endIndex: 3,
+			backgroundPosition: "center"
 	};
 	}
 
 render() {
-const { photos, cardWidth, cardHeight, backgroundSize, backgroundRepeat, backgroundPosition, startIndex, endIndex } = this.state;
+const { photos, backgroundSize, backgroundRepeat, backgroundPosition } = this.state;
 
 return (
 	<div className="photo-grid__container">
-		<div className="photo-grid__controls">
-			<button onClick={() => this.setState({ endIndex: endIndex + 1 })}>+</button>
-			<button onClick={() => this.setState({ endIndex: endIndex - 1 })}>-</button>
-		</div>
 		<div className="grid">
-		{photos.slice(startIndex, endIndex).map((photo) => (
+		{photos.map((photo) => (
 			<div
 				className="photo-grid__card"
 				key={photo.id}
 				style={{
-					width: `${cardWidth}px`,
-					height: `${cardHeight}px`,
-					backgroundImage: `url(${photo.urls.regular})`,
+					backgroundImage: `url(${photo})`,
 					backgroundSize: backgroundSize,
 					backgroundRepeat: backgroundRepeat,
 					backgroundPosition: backgroundPosition,
 				}}
-				onClick={() => window.open(photo.urls.regular, "_blank")}
+				onClick={() => window.open(photo, "_blank")}
 			></div>
 		))}</div>
 			<style jsx global>
@@ -50,13 +48,14 @@ return (
 
 				}
 				.photo-grid__card {
-					width: 250px;
-					height: 250px; 
+					width: 300px;
+					height: 300px; 
 					background-color: #eee;
 					background-size: cover;
 					background-repeat: no-repeat;
 					box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 					transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+					justify-self: center;
 				}
 
 				.photo-grid__card:hover {
@@ -90,32 +89,34 @@ return (
 					background: #ffcbe5;
 				}
 
-				@media (max-width: 768px) { 
+				@media (max-width: 975px) { 
+					.grid {
+						grid-template-columns: 1fr 1fr;
+						margin: 1rem auto;
+					}
+				}
+
+				@media (max-width: 675px) { 
 					.grid {
 						grid-template-columns: 1fr;
-						margin: auto;
+						grid-gap: 3px
+					}
+
+					.photo-grid__card {
+						width: 100%;
+						height: 500px;
+					}
+				}
+
+				@media (hover: none) { 
+					.photo-grid__card:hover { 
+						transform: scale(1);
 					}
 				}
 				`}
 			</style>
 		</div>
 );
-}
-
-//When the component mounts lets grab the data from the API
-componentDidMount() {
-
-	//FetchData is an asyncrounous function that will be grabbing the data from the API
-	const fetchData = async () => {
-		//Fetch the data from the API
-		const response = await fetch("https://api.unsplash.com/photos?client_id=3hQo3FEZqCxsjedEFlBurRdCn1BDiYlOsj_99WBwEDU&per_page=18");
-		//Turn data into JSON
-		const data = await response.json();
-		//Set the state to our data
-		this.setState({ photos: data });
-	};
-
-	fetchData();
 }
 
 }

@@ -8,9 +8,7 @@ class Header extends Component {
 		this.state = {
 			navItems: [
 				['Home', '/'],
-				['Portfolio', '/portfolio'],
-				['Contact', '/contact'],
-				['Experiments', '/experiments']
+				['Photography', '/photography'],
 			],
 		};
 	}

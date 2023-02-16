@@ -90,7 +90,22 @@ handleSubmit = async e => {
 						}
 
 						button {
-							width: 200px
+							padding: .5rem 2rem;
+							margin: auto;
+							background: #d496b1;
+							border: none;
+							color: #fff;
+							font-size: 1.5rem;
+							margin: 0 .5rem;
+							transition: all ease-in-out 150ms;
+						}
+
+						button:hover { 
+							transform: scale(.9);
+						}
+
+						button:active {
+							background: #ffcbe5;
 						}
 						
 						.comment { 
