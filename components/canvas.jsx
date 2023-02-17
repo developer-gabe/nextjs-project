@@ -8,9 +8,7 @@ const Canvas = () => {
     const ctx = canvas.getContext("2d");
     let width = window.innerWidth;
     let height = window.innerHeight;
-
-		width = window.innerWidth;
-		height = window.innerHeight;
+		
 		canvas.width = width;
 		canvas.height = height;
 
@@ -23,19 +21,34 @@ const Canvas = () => {
     });
 
     // Create an array of particles
-    const particles = [];
-    for (let i = 0; i < 200; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        radius: Math.random() * 3 + 2,
-        color: "#FFFFFF",
-        speed: {
-          x: Math.random() * 2 - 1,
-          y: Math.random() * 2 - 1,
-        },
-      });
-    }
+		const particles = [];
+		if (width > 768) { 
+			for (let i = 0; i < 200; i++) {
+				particles.push({
+					x: Math.random() * width,
+					y: Math.random() * height,
+					radius: Math.random() * 3 + 2,
+					color: "#FFFFFF",
+					speed: {
+						x: Math.random() * 2 - 1,
+						y: Math.random() * 2 - 1,
+					},
+				});
+			}
+		} else {
+			for (let i = 0; i < 50; i++) {
+				particles.push({
+					x: Math.random() * width,
+					y: Math.random() * height,
+					radius: Math.random() * 3 + 2,
+					color: "#FFFFFF",
+					speed: {
+						x: Math.random() * 2 - 1,
+						y: Math.random() * 2 - 1,
+					},
+				});
+			}
+		}
 
     // Draw the particles and animate them
     function animate() {
@@ -69,7 +82,7 @@ const Canvas = () => {
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 100) {
+          if (distance < 120) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
