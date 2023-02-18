@@ -1,107 +1,71 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from 'react';
 
 const Canvas = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-		
-		canvas.width = width;
-		canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    let requestId;
 
-    // Update the canvas dimensions on window resize
-    window.addEventListener("resize", () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    });
+    // Set canvas dimensions to match window size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    // Create an array of particles
-		const particles = [];
-		if (width > 768) { 
-			for (let i = 0; i < 200; i++) {
-				particles.push({
-					x: Math.random() * width,
-					y: Math.random() * height,
-					radius: Math.random() * 3 + 2,
-					color: "#FFFFFF",
-					speed: {
-						x: Math.random() * 2 - 1,
-						y: Math.random() * 2 - 1,
-					},
-				});
-			}
-		} else {
-			for (let i = 0; i < 50; i++) {
-				particles.push({
-					x: Math.random() * width,
-					y: Math.random() * height,
-					radius: Math.random() * 3 + 2,
-					color: "#FFFFFF",
-					speed: {
-						x: Math.random() * 2 - 1,
-						y: Math.random() * 2 - 1,
-					},
-				});
-			}
-		}
+    const stars = [];
 
-    // Draw the particles and animate them
-    function animate() {
-      // Clear the canvas
-      ctx.clearRect(0, 0, width, height);
+    // Generate stars
+    for (let i = 0; i < 1000; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 1.5;
+      const speed = Math.random() * 0.05 + 0.05;
+      stars.push({ x, y, radius, speed });
+    }
 
-      // Update the position of the particles
-      particles.forEach((particle) => {
-        particle.x += particle.speed.x;
-        particle.y += particle.speed.y;
+    const drawBackground = (x, y, radius) => {
+      const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+      gradient.addColorStop(0, 'purple');
+      gradient.addColorStop(1, 'transparent');
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, 2 * Math.PI);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+    };
 
-        // Bounce the particles off the walls of the canvas
-        if (particle.x < particle.radius || particle.x > width - particle.radius) {
-          particle.speed.x *= -1;
+    const animate = () => {
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw background
+      const radius = Math.min(canvas.width, canvas.height) * 1.5;
+      const x = canvas.width - radius;
+      const y = canvas.height - radius;
+      drawBackground(x, y, radius);
+
+      // Draw stars
+      stars.forEach(star => {
+        star.x -= star.speed;
+        if (star.x < 0) {
+          star.x = canvas.width;
         }
-        if (particle.y < particle.radius || particle.y > height - particle.radius) {
-          particle.speed.y *= -1;
-        }
-
-        // Draw the particle on the canvas
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, 2 * Math.PI);
-        ctx.fillStyle = particle.color;
+        ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = 'white';
         ctx.fill();
       });
 
-      // Draw lines between the particles
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+      requestId = window.requestAnimationFrame(animate);
+    };
 
-          if (distance < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = "#d7a08b";
-            ctx.lineWidth = 1 - distance / 150;
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Call requestAnimationFrame to animate the next frame
-      requestAnimationFrame(animate);
-    }
-
-    // Start the animation
     animate();
-  }, [canvasRef]);
 
-  return <canvas ref={canvasRef} />;
+    return () => {
+      window.cancelAnimationFrame(requestId);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />;
 };
 
 export default Canvas;
