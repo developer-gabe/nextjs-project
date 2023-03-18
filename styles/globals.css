@@ -11,11 +11,15 @@
 body {
 	margin: auto;
 	padding: .25rem;
-	max-width: 700px;
 	font-family: 'Poppins';
 	background-color: #d1c8ff;
 	color: #251f54;
 	letter-spacing: .6px;
+}
+
+Header, .Home, article, Footer {
+	max-width: 700px;
+	margin: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {

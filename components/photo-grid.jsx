@@ -43,15 +43,15 @@ return (
 				.grid { 
 					display: grid;
 					grid-gap: 10px;
-					margin: 3rem auto;
-					grid-template-columns: 1fr 1fr;
+					margin: 1rem;
+					grid-template-columns: 1fr 1fr 1fr;
 				}
 
 				.photo-grid__card {
 					display: flex;
 					width: 100%;
 					height: 100%; 
-					min-height: 300px;
+					min-height: 400px;
 					background-color: #eee;
 					background-size: cover;
 					background-repeat: no-repeat;
@@ -84,17 +84,18 @@ return (
 					background: #ffcbe5;
 				}
 
-				@media (max-width: 975px) { 
+				@media (max-width: 900px) { 
 					.grid {
 						grid-template-columns: 1fr 1fr;
-						margin: 1rem auto;
+
 					}
 				}
+
 
 				@media (max-width: 675px) { 
 					.grid {
 						grid-template-columns: 1fr;
-						grid-gap: 3px
+						grid-gap: 20px
 					}
 
 					.photo-grid__card {
