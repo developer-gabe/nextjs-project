@@ -16,6 +16,10 @@ border-bottom: 1px solid lavender;
 	color: #251f54;
 }
 
+.blog-list a:hover {
+	text-decoration: underline;
+}
+
 .blog-list__section {
 	margin: auto;
 }
