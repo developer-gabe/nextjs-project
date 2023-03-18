@@ -5,6 +5,7 @@ class Bio extends Component {
 		super(props);
 		this.state = {
 			name: "Gabe Sousa",
+			title: "Front-End Developer @ Abnormal Security",
 			bio: "Howdy - I'm a developer with experience in all sorts of technologies and frameworks like React, Vue.js, and even good ol' WordPress. I've got a knack for delivering top-notch work, and I've engineered all sorts of cool stuff, like SPAs, custom landing pages, modular templates, and even some sweet web animations.",
 			image: "/images/gabe.jpg",
 		};
@@ -18,12 +19,13 @@ class Bio extends Component {
 				</div>
 				<div className="bio__text">
 					<h1>Gabe Sousa</h1>
+					<p>{this.state.title}</p>
 					<p>{this.state.bio}</p>
 				</div>
 				<style>
 					{`
 						.bio-image { 
-							max-width: 150px;
+							max-width: 220px;
 							border-radius: 26px;
 						}
 
