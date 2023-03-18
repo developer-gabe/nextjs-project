@@ -16,6 +16,7 @@ export default function Home ({ allPostsData }){
     <main className='Home'>
 			<Bio />
 			<section className='blog-list__section'>
+				<h2>Latest Posts:</h2>
         <ul className="blog-list">
           {allPostsData.map(({ id, date, title }) => (
             <li key={id} className="blog-list__item">
