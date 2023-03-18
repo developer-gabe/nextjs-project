@@ -14,14 +14,28 @@ const Canvas = () => {
 
     const stars = [];
 
-    // Generate stars
-    for (let i = 0; i < 1000; i++) {
-      const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height;
-      const radius = Math.random() * 1.5;
-      const speed = Math.random() * 0.05 + 0.05;
-      stars.push({ x, y, radius, speed });
-    }
+		if (canvas.width < 768) { 
+			// Generate stars
+			for (let i = 0; i < 50; i++) {
+				const x = Math.random() * canvas.width;
+				const y = Math.random() * canvas.height;
+				const radius = Math.random() * 1.5;
+				const speed = Math.random() * 0.05 + 0.05;
+				stars.push({ x, y, radius, speed });
+			}
+
+		} else {
+			    // Generate stars
+					for (let i = 0; i < 100; i++) {
+						const x = Math.random() * canvas.width;
+						const y = Math.random() * canvas.height;
+						const radius = Math.random() * 1.5;
+						const speed = Math.random() * 0.05 + 0.05;
+						stars.push({ x, y, radius, speed });
+					}
+
+		}
+
 
     const drawBackground = (x, y, radius) => {
       const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);

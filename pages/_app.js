@@ -1,14 +1,15 @@
 import App from 'next/app'
 import '../styles/globals.css'
 import Header from '../components/header'
-import Canvas from '../components/canvas';
+import '../styles/blog-post.css'
+import '../styles/blog-list.css'
+import 'prism-themes/themes/prism-shades-of-purple.css';
 
 function MyApp({ Component, pageProps }) {
 	return <>
 					<Header /> 
 					<Component {...pageProps} />
 					<footer>GabeSousa.com 2023</footer>
-					<Canvas />
 				</>
 }
 

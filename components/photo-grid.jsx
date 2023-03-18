@@ -42,25 +42,20 @@ return (
 				{`
 				.grid { 
 					display: grid;
-					grid-template-columns:1fr 1fr 1fr;
-					grid-gap: 30px;
+					grid-gap: 10px;
 					margin: 3rem auto;
-
+					grid-template-columns: 1fr 1fr;
 				}
+
 				.photo-grid__card {
-					width: 300px;
-					height: 300px; 
+					display: flex;
+					width: 100%;
+					height: 100%; 
+					min-height: 300px;
 					background-color: #eee;
 					background-size: cover;
 					background-repeat: no-repeat;
-					box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-					transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 					justify-self: center;
-				}
-
-				.photo-grid__card:hover {
-					transform: scale(1.1);
-					box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0, 0, 0, 0.295);
 				}
 
 				.photo-grid__controls {

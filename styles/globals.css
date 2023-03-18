@@ -1,8 +1,58 @@
+@font-face {
+  font-family: 'Abril Fatface';
+  src: url('/fonts/AbrilFatface/AbrilFatface-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+
 body {
 	margin: auto;
 	padding: .25rem;
-	max-width: 950px;
-	font-family: 'Roboto', sans-serif;
+	max-width: 700px;
+	font-family: 'Poppins';
+	background-color: #d1c8ff;
+	color: #251f54;
+	letter-spacing: .6px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family:  'Abril Fatface';
+}
+
+h1 {
+	font-size: 2.55rem;
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 1.55rem;
+	font-weight: 600;
+}
+
+h3 {
+	font-size: .9rem;
+	font-weight: 600;
+}
+
+p {
+	font-size: .9rem;
+	font-weight: 400;
+	line-height: 2;
+}
+
+em {
+	font-family: serif;
+}
+
+ol, ul {
+	padding-left: 1.5rem;
+}
+
+ol li, ul li {
+	margin-bottom: .5rem;
 }
 
 main {
@@ -11,60 +61,85 @@ main {
 
 footer {
 	margin: 3rem auto;
-	text-align: center;
+	text-align: right;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	font-size: .65rem;
-	color: #bbb;
+	opacity: .6;
 }
 
 canvas {
 	display: none;
 }
 
-.bio-grid {
-	animation: slideIn 250ms ease-out;
+.Home, .bio-grid, article {
+	animation: slideIn 250ms ease-in-out;
 }
 
 
 
 .grid {
-	animation: slideIn 350ms ease-out;
+	animation: slideIn 250ms ease-out;
+}
+
+@media screen and (max-width: 700px) {
+
+	body {
+		padding: 1rem;
+	}
+
+	.bio {
+		grid-template-columns: 1fr !important;
+	}
+
+	.bio h1 {
+		margin-top: 0;
+		font-size: 2.55rem;
+	}
+
+	.bio__image {
+		display: none;
+	}
+
+	h1 {
+		font-size: 2rem;
+		font-weight: 700;
+	}
+	
+	h2 {
+		font-size: 1rem;
+		font-weight: 600;
+	}
+	
+	h3 {
+		font-size: .8rem;
+		font-weight: 600;
+	}
 }
 
 @media (prefers-color-scheme: dark) {
+
 	body {
-		background-color: #0c0920;
-		color: #fff;
+		background-color: #251f54;
+		color: #d1c8ff;
 	}
 
-	canvas {
-		display: block;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		opacity: 1;
+	.blog-list a {
+		color: #f4c8ff !important;
 	}
 
-	.header__nav-item {
-		color: #fba48f;
+	.header__nav a {
+		color: #d1c8ff !important;
 	}
 
-	.header__nav-item:hover {
-		color: #fff !important;
-	}
-
-	footer {
-		color: #d7a08b;
+	img {
+		filter: brightness(.7)
 	}
 }
 
 @keyframes slideIn {
 	0% {
-		transform: translate(0%, 10%);
+		transform: translate(0%, 2.5%);
 		opacity: 0;
 	}
 	100% {

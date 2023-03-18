@@ -1,17 +1,36 @@
+import { getSortedPostsData } from '../lib/posts';
+import Link from 'next/link';
 import Bio from '../components/bio';
 
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
 
-export default function Home() {
-
+export default function Home ({ allPostsData }){
   return (
-      <main>
-				<Bio 
-					userName="Gabe Sousa"
-					userImage="/images/gabe.jpg"
-					userTitle="Front-End Developer"
-					userBio="Howdy! I'm a developer with experience in all sorts of technologies and frameworks like React, Vue.js, and even good ol' WordPress. I've got a knack for delivering top-notch work, and I've engineered all sorts of cool stuff, like SPAs, custom landing pages, email templates, and even some sweet web animations. Let's build something awesome together!"
-				/>
-
-      </main>
+    <main className='Home'>
+			<Bio />
+			<section className='blog-list__section'>
+        <ul className="blog-list">
+          {allPostsData.map(({ id, date, title }) => (
+            <li key={id} className="blog-list__item">
+							<Link href={`/posts/${id}`}>{title}</Link>
+							<p className='blog-post__date'>
+                {new Date(date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
   )
 }
