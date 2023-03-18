@@ -15,6 +15,10 @@
 	font-size: .8rem;
 }
 
+.blog-list__item .blog-post__date {
+	font-size: .8rem;
+}
+
 .remark-highlight pre code {
 	font-size: .8rem;
 }
