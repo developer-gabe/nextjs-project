@@ -1,6 +1,7 @@
 ---
 title: 'Running CSS Animations Once Per Session'
 date: '2020-07-18'
+tags: ['css', 'animation']
 ---
 
 I was working on some intro animations the other day for my site and had an idea to have a user land on the homepage, and the word “hello” would slide in from the left greeting them.

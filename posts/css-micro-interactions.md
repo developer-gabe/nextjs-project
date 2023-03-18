@@ -1,6 +1,7 @@
 ---
 title: 'A little bit of CSS micro-interactions and some cards'
 date: '2020-03-07'
+tags: ['css', 'micro-interactions']
 ---
 
 I recently reworked my site to feature cards on the homepage that acts as a gallery for some of the recent drawings that I’ve done. 

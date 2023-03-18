@@ -1,6 +1,7 @@
 ---
 title: 'Understanding the Prototype Chain with Object.keys()'
-date: '2023-03-18'
+date: '2023-03-13'
+tags: ['javascript', 'object', 'prototype']
 ---
 
 >The Object.keys() static method returns an array of a given object's own enumerable string-keyed property names.
