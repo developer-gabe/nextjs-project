@@ -18,7 +18,7 @@ export default function Home ({ allPostsData }){
 			<section className='blog-list__section'>
 				<h2>Latest Posts:</h2>
         <ul className="blog-list">
-          {allPostsData.map(({ id, date, title }) => (
+          {allPostsData.slice(0,3).map(({ id, date, title }) => (
             <li key={id} className="blog-list__item">
 							<Link href={`/posts/${id}`}>{title}</Link>
 							<p className='blog-post__date'>
@@ -31,6 +31,9 @@ export default function Home ({ allPostsData }){
             </li>
           ))}
         </ul>
+				<div className='see-all-btn-container'>
+				<Link href={'/posts'} className="see-all-btn">All Posts</Link>
+				</div>
       </section>
     </main>
   )

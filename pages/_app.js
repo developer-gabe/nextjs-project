@@ -9,7 +9,7 @@ import 'prism-themes/themes/prism-shades-of-purple.css';
 function MyApp({ Component, pageProps }) {
 	return <>
 					<Head>
-						<title>Gabe Sousa</title>
+						<title>Gabe Sousa | Front-End Developer</title>
 						<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 						<meta name="theme-color" content="#fdced0" media="(prefers-color-scheme: light)"></meta>
 						<meta name="theme-color" content="#14112e" media="(prefers-color-scheme: dark)"></meta>
