@@ -35,11 +35,9 @@ class Header extends Component {
             font-family:  'Poppins';
             text-decoration: none;
             font-size: 1rem;
-            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
 						color: #251f54;
-						opacity: 0.6;
 						transition: all ease-in-out 0.2s;
           }
 

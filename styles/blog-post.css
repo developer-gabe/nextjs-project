@@ -35,6 +35,10 @@ blockquote {
 	border-left: 4px solid #251f54;
 }
 
+article {
+	margin-top: 2rem;
+}
+
 article img {
 	width: 100%;
 	border-radius: 16px;
