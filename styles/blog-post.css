@@ -19,6 +19,10 @@
 	font-size: .8rem;
 }
 
+.go-back-btn-container {
+	margin-top: 2rem;
+}
+
 .remark-highlight pre code {
 	font-size: .8rem;
 }

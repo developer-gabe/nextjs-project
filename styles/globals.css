@@ -98,7 +98,7 @@ footer {
 	margin-top: 2rem;
 }
 
-.see-all-btn {
+.button {
 	text-decoration: none;
 	background: #1d1e3f;
 	color: #fdced0;
@@ -109,7 +109,15 @@ footer {
 	transition: background ease-in-out 150ms;
 }
 
-.see-all-btn:hover {
+.tags {
+	margin: .5rem;
+}
+
+.tags:first-child {
+	margin-left: 0 !important;
+}
+
+.button:hover {
 	background: #0b0b18;
 }
 
@@ -169,7 +177,7 @@ footer {
 		filter: brightness(.7)
 	}
 
-	.see-all-btn { 
+	.button { 
 		background: #fdced0 !important;
 		color: #1d1e3f;
 	}

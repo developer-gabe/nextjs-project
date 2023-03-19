@@ -1,6 +1,7 @@
 import { getSortedPostsData } from '../lib/posts';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -11,24 +12,41 @@ export async function getStaticProps() {
   };
 }
 
-export default function Posts ({ allPostsData }) {
+export default function Posts({ allPostsData }) {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredPosts = allPostsData.filter(({ title, tags }) => 
-    title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+  const filteredPosts = allPostsData.filter(
+    ({ title, tags }) =>
+      title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get('search');
+    if (searchParam) {
+      setSearchQuery(searchParam);
+    }
+  }, []);
+
+  function handleSearchQueryChange(event) {
+    setSearchQuery(event.target.value);
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('search', event.target.value);
+    const newUrl = window.location.pathname + '?' + urlParams.toString();
+    window.history.pushState(null, '', newUrl);
+  }
+
   return (
-    <main className='Posts'>
-      <section className='blog-list__section'>
+    <main className="Posts">
+      <section className="blog-list__section">
         <h2>Search:</h2>
         <input
           type="text"
           value={searchQuery}
-          onChange={(event) => setSearchQuery(event.target.value)}
+          onChange={handleSearchQueryChange}
           placeholder="Find..."
-          className='search-input'
+          className="search-input"
         />
         <h2>Posts:</h2>
         {filteredPosts.length > 0 ? (
@@ -36,7 +54,7 @@ export default function Posts ({ allPostsData }) {
             {filteredPosts.map(({ id, date, title }) => (
               <li key={id} className="blog-list__item">
                 <Link href={`/posts/${id}`}>{title}</Link>
-                <p className='blog-post__date'>
+                <p className="blog-post__date">
                   {new Date(date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -51,5 +69,5 @@ export default function Posts ({ allPostsData }) {
         )}
       </section>
     </main>
-  )
+  );
 }

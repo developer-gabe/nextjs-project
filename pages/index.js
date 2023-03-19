@@ -32,7 +32,7 @@ export default function Home ({ allPostsData }){
           ))}
         </ul>
 				<div className='see-all-btn-container'>
-				<Link href={'/posts'} className="see-all-btn">All Posts</Link>
+				<Link href={'/posts'} className="button">All Posts</Link>
 				</div>
       </section>
     </main>
