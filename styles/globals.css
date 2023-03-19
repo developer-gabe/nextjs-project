@@ -9,10 +9,11 @@
 }
 
 body {
+	height: 100vh;
 	margin: auto;
 	padding: .25rem;
 	font-family: 'Poppins';
-	background-color: #d1c8ff;
+	background: #fdced0;
 	color: #251f54;
 	letter-spacing: .6px;
 }
@@ -77,13 +78,13 @@ canvas {
 }
 
 .Home, .bio-grid, article {
-	animation: slideIn 250ms ease-in-out;
+	animation: slideIn 150ms ease-in-out;
 }
 
 
 
 .grid {
-	animation: slideIn 250ms ease-out;
+	animation: slideIn 150ms ease-out;
 }
 
 @media screen and (max-width: 700px) {
@@ -121,8 +122,8 @@ canvas {
 @media (prefers-color-scheme: dark) {
 
 	body {
-		background-color: #251f54;
-		color: #d1c8ff;
+		background-color: #14112e;
+		color: #fdced0;
 	}
 
 	.blog-list a {
@@ -133,6 +134,10 @@ canvas {
 		color: #d1c8ff !important;
 	}
 
+	.blog-list li {
+		border-bottom: 1px solid #fdced0 !important;
+	}
+
 	img {
 		filter: brightness(.7)
 	}
@@ -140,12 +145,21 @@ canvas {
 
 @keyframes slideIn {
 	0% {
-		transform: translate(0%, 2.5%);
+		transform: translate(0, 30px);
 		opacity: 0;
 	}
 	100% {
-		transform: translate(0%, 0%);
+		transform: translate(0px, 0px);
 		opacity: 1;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 100% 50%;
 	}
 }
 
