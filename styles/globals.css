@@ -87,7 +87,11 @@ footer {
 }
 
 .search-input:focus {
-	outline: 2px solid #ffbcb1;
+	outline: none;
+}
+
+::placeholder { 
+	color: #fdced0;
 }
 
 .see-all-btn-container {
@@ -169,6 +173,12 @@ footer {
 		background: #fdced0 !important;
 		color: #1d1e3f;
 	}
+
+	.search-input:focus {
+		outline: 2px solid #ffbcb1;
+		
+	}
+	
 }
 
 @keyframes slideIn {
