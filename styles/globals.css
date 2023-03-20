@@ -99,7 +99,7 @@ footer {
 	width: 90%;
 	padding: 1rem;
 	background: #1d1e3f;
-	color: #fdced0;
+	color: #fec8a0;
 	border: none;
 	border-radius: 16px;
 	font-size: 1rem;
@@ -110,7 +110,7 @@ footer {
 }
 
 ::placeholder { 
-	color: #fdced0;
+	color: #fec8a0;
 }
 
 .see-all-btn-container {
