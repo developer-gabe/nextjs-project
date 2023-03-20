@@ -20,7 +20,7 @@
 }
 
 .go-back-btn-container {
-	margin-top: 2rem;
+	margin: 2rem auto 1rem auto;
 }
 
 .remark-highlight pre code {
