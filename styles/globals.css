@@ -29,6 +29,10 @@ body {
 	margin: auto;
 }
 
+img {
+	border: 2px solid #251f54;
+}
+
 Header {
 	max-width: 786px;
 	margin: auto;

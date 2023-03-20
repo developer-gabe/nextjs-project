@@ -56,6 +56,7 @@ return (
 					background-size: cover;
 					background-repeat: no-repeat;
 					justify-self: center;
+					border: 2px solid #251f54;
 				}
 
 				.photo-grid__controls {
