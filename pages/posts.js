@@ -59,6 +59,13 @@ export default function Posts({ allPostsData }) {
           placeholder="Find..."
           className="search-input"
         />
+        <ul className="tag-list">
+          {uniqueTags.map((tag) => (
+            <li key={tag} className="tag-list-item">
+              <Link href={`/posts?search=${tag}`} onClick={(event) => handleTagClick(event, tag)} className="tag button">{tag}</Link>
+            </li>
+          ))}
+        </ul>
         <h2>Posts:</h2>
         {filteredPosts.length > 0 ? (
           <ul className="blog-list">
@@ -78,14 +85,6 @@ export default function Posts({ allPostsData }) {
         ) : (
           <p>Nothing here...</p>
         )}
-        <h2>Tags:</h2>
-        <ul className="tag-list">
-          {uniqueTags.map((tag) => (
-            <li key={tag} className="tag-list-item">
-              <Link href={`/posts?search=${tag}`} onClick={(event) => handleTagClick(event, tag)} className="tag button">{tag}</Link>
-            </li>
-          ))}
-        </ul>
       </section>
     </main>
   );
