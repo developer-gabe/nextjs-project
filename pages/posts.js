@@ -37,6 +37,17 @@ export default function Posts({ allPostsData }) {
     window.history.pushState(null, '', newUrl);
   }
 
+  function handleTagClick(event, tag) {
+    event.preventDefault();
+    setSearchQuery(tag);
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('search', tag);
+    const newUrl = window.location.pathname + '?' + urlParams.toString();
+    window.history.pushState(null, '', newUrl);
+  }
+
+  const uniqueTags = Array.from(new Set(allPostsData.flatMap((post) => post.tags)));
+
   return (
     <main className="Posts">
       <section className="blog-list__section">
@@ -67,6 +78,14 @@ export default function Posts({ allPostsData }) {
         ) : (
           <p>Nothing here...</p>
         )}
+        <h2>Tags:</h2>
+        <ul className="tag-list">
+          {uniqueTags.map((tag) => (
+            <li key={tag} className="tag-list-item">
+              <Link href={`/posts?search=${tag}`} onClick={(event) => handleTagClick(event, tag)} className="tag button">{tag}</Link>
+            </li>
+          ))}
+        </ul>
       </section>
     </main>
   );
