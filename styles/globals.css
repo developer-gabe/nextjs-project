@@ -18,9 +18,24 @@ body {
 	letter-spacing: .6px;
 }
 
-Header, .Home, .Posts, article, Footer {
+.Home, .Posts, article {
+	border: 2px solid #251f54;
+	padding: 2rem;
+	box-shadow: 10px 10px;
+}
+
+.Home, .Posts, article {
 	max-width: 700px;
 	margin: auto;
+}
+
+Header {
+	max-width: 786px;
+	margin: auto;
+}
+
+Footer {
+	max-width: 780px;
 }
 
 h1, h2, h3, h4, h5, h6 {
