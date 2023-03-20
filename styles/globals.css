@@ -13,7 +13,7 @@ body {
 	margin: auto;
 	padding: .25rem;
 	font-family: 'Poppins';
-	background: #fdced0;
+	background: #fec8a0;
 	color: #251f54;
 	letter-spacing: .6px;
 }
@@ -120,7 +120,7 @@ footer {
 .button {
 	text-decoration: none;
 	background: #1d1e3f;
-	color: #fdced0;
+	color: #fec8a0;
 	border: none;
 	border-radius: 16px;
 	padding: .5rem 1rem;
