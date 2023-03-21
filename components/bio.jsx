@@ -6,7 +6,7 @@ class Bio extends Component {
 		this.state = {
 			name: "Gabe Sousa",
 			title: "Front-End Developer @ Abnormal Security",
-			bio: "Howdy - I'm a developer with experience in all sorts of technologies and frameworks like React, Vue.js, and even good ol' WordPress. I've got a knack for delivering top-notch work, and I've engineered all sorts of cool stuff, like SPAs, custom landing pages, modular templates, and even some sweet web animations.",
+			bio: "I tried the college thing, but it wasn't for me so I taught myself web development, and developed a particular passion for the front-end. Why? Because these bespectacled eyes see things. These trap-beat loving ears hear things. This Brazilian born, mountain loving soul feels things - and I turn it all into immersive digital art",
 			image: "/images/gabe.jpg",
 		};
 	}
