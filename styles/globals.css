@@ -18,13 +18,13 @@ body {
 	letter-spacing: .6px;
 }
 
-.Home, .Posts, article {
+.Home, .Posts, article, .portfolio-page, .single-photography-page {
 	border: 2px solid #251f54;
 	padding: 2rem;
 	box-shadow: 10px 10px;
 }
 
-.Home, .Posts, article {
+.Home, .Posts, article, .portfolio-page {
 	max-width: 700px;
 	margin: auto;
 }
@@ -149,13 +149,21 @@ footer {
 	padding: 0;
 }
 
+.single-photography-page {
+	max-width: 700px;
+	margin: auto;
+}
+
+.single-photography-page img {
+	max-width: 100%;
+}
+
 
 @media screen and (max-width: 700px) {
 
-	.Home, .Posts, article {
+	.Home, .Posts, article, .portfolio-page {
 		border: 2px solid #251f54;
 		padding: 1rem;
-		box-shadow: 10px 10px;
 	}
 
 	body {
@@ -189,6 +197,10 @@ footer {
 
 	.blog-post__tags {
 		display: none;
+	}
+
+	.single-photography-page {
+		padding: 1rem;
 	}
 }
 
