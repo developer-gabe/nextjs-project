@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
+<url>
+  <loc>https://gabesousa.com/</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/photography</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts/server-side-rendering</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts/javascript-map-method</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts/prototype-chain-and-object-keys-method</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/photography/DSC00331</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/photography/DSC00075</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/photography/tall</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/photography/rmnp</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/photography/DSC00838</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/photography/DSC01000</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/photography/DSC01586</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=javascript</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=nextjs</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=react</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=server-side-rendering</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=object</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=map</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=prototype</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=css</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=animation</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=session-storage</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=beginner</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts?search=micro-interactions</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts/running-css-animations-once</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gabesousa.com/posts/css-micro-interactions</loc>
+  <lastmod>2023-03-23T16:54:21+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
