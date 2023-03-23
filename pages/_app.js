@@ -14,23 +14,14 @@ function MyApp({ Component, pageProps }) {
 						<meta name="theme-color" content="#fdced0" media="(prefers-color-scheme: light)"></meta>
 						<meta name="theme-color" content="#14112e" media="(prefers-color-scheme: dark)"></meta>
 						<link rel="icon" href="/favicon.ico" />
-						{/* Global Site Tag (gtag.js) - Google Analytics */}
-						<script
-							async
-							src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-							/>
-							<script
-							dangerouslySetInnerHTML={{
-							__html: `
-							window.dataLayer = window.dataLayer || [];
-							function gtag(){dataLayer.push(arguments);}
-							gtag('js', new Date());
-							gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-							page_path: window.location.pathname,
-							});
-							`,
-							}}
-						/>
+						<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLDTJTY8RC"></script>
+					<script>
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+
+						gtag('config', 'G-RLDTJTY8RC');
+					</script>
 					</Head>
 					<Header /> 
 					<Component {...pageProps} />
