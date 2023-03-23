@@ -24,7 +24,7 @@ Hydration is the process of taking the initial state provided by the server and 
 
 ### Faster Load times
 
-With server side rendering (SSR) the user receives a fully rendered page from the server, meaning the user can start interacting with the page much sooner than if they had to wait for the JavaScript to download and render the page. This is especially important for users with low-powered devices, as it can reduce the amount of processing required by the client.
+With server side rendering (SSR) the user receives a fully rendered page from the server, meaning the user can start interacting with the page much sooner than if they had to wait for the JavaScript to download and render the page. This can be pretty important for users with low-powered devices, since it can reduce the amount of processing required by their devices.
 
 ### Better SEO
 
