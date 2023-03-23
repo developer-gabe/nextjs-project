@@ -15,15 +15,26 @@ function MyApp({ Component, pageProps }) {
 						<meta name="theme-color" content="#14112e" media="(prefers-color-scheme: dark)"></meta>
 						<link rel="icon" href="/favicon.ico" />
 						<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLDTJTY8RC"></script>
-					<script>
-						window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
-						gtag('js', new Date());
-
-						gtag('config', 'G-RLDTJTY8RC');
-					</script>
+					<script
+							dangerouslySetInnerHTML={{
+								__html: `
+									window.dataLayer = window.dataLayer || [];
+									function gtag(){dataLayer.push(arguments);}
+									gtag('js', new Date());
+									gtag('config', 'G-RLDTJTY8RC');
+								`,
+							}}
+					/>
 					</Head>
 					<Header /> 
+					<noscript>
+						<iframe
+							src="https://www.googletagmanager.com/ns.html?id=GTM_CONTAINER_ID"
+							height="0"
+							width="0"
+							style="display:none;visibility:hidden"
+						></iframe>
+					</noscript>
 					<Component {...pageProps} />
 					<footer>GabeSousa.com 2023</footer>
 				</>
