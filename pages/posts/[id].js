@@ -2,12 +2,13 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 import Link from 'next/link'
 
 export default function Post({ postData }) {
-  const date = new Date(postData.date)
-  const formattedDate = date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+	const date = new Date(postData.date);
+	date.setDate(date.getDate() + 1);
+	const formattedDate = date.toLocaleDateString('en-US', {
+		month: 'long',
+		year: 'numeric',
+		day: 'numeric',
+	})
 
   return (
 			<article className='blog-post'>

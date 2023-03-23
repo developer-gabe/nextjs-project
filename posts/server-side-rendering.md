@@ -1,6 +1,6 @@
 ---
 title: 'Exploring the Benefits of Server-Side Rendering with Next.js'
-date: '2023-03-23'
+date: '2023-03-22'
 tags: ['javascript', 'nextjs', 'react', 'server-side-rendering']
 ---
 

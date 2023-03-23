@@ -1,6 +1,6 @@
 ---
 title: 'Understanding the Prototype Chain with Object.keys()'
-date: '2023-03-13'
+date: '2023-03-12'
 tags: ['javascript', 'object', 'prototype']
 ---
 

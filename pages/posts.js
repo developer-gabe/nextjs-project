@@ -73,11 +73,11 @@ export default function Posts({ allPostsData }) {
               <li key={id} className="blog-list__item">
                 <Link href={`/posts/${id}`}>{title}</Link>
                 <p className="blog-post__date">
-                  {new Date(date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
+								{new Date(new Date(date).setDate(new Date(date).getDate() + 1)).toLocaleDateString('en-US', {
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})}
                 </p>
               </li>
             ))}
