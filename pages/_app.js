@@ -27,14 +27,6 @@ function MyApp({ Component, pageProps }) {
 					/>
 					</Head>
 					<Header /> 
-					<noscript>
-						<iframe
-							src="https://www.googletagmanager.com/ns.html?id=GTM_CONTAINER_ID"
-							height="0"
-							width="0"
-							style="display:none;visibility:hidden"
-						></iframe>
-					</noscript>
 					<Component {...pageProps} />
 					<footer>GabeSousa.com 2023</footer>
 				</>
