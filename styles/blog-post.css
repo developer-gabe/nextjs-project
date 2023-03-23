@@ -27,6 +27,14 @@
 	font-size: .8rem;
 }
 
+.blog-post__content {
+	margin-bottom: 5rem;
+}
+
+.blog-post__content p {
+	line-height: 2.25;
+}
+
 pre[class*="language-"] {
 	padding: 1.5rem !important;
 }
@@ -41,6 +49,7 @@ blockquote {
 
 article {
 	margin-top: 2rem;
+	overflow: hidden;
 }
 
 article img {
@@ -48,19 +57,8 @@ article img {
 	border-radius: 16px;
 }
 
-pre, code {
-	font-family: menlo;
-	color: #ddd;
-	overflow: scroll;
-	font-size: .8rem;
-}
-
 pre {
-	background-color: #0c0920;
 	border-radius: 16px;
-	padding: 2rem 1rem;
-	margin: 1rem 0;
-	line-height: 1.5;
 }
 
 ul, ol {
@@ -75,6 +73,10 @@ ul, ol {
 
 	p {
 		line-height: 2;
+	}
+
+	.blog-post__content {
+		margin-bottom: 2rem;
 	}
 
 }

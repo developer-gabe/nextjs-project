@@ -59,6 +59,7 @@ h2 {
 
 h3 {
 	font-size: .9rem;
+	font-weight: 400;
 }
 
 p {
@@ -69,6 +70,7 @@ p {
 
 em {
 	font-family: serif;
+	font-size: 1rem;
 }
 
 ol, ul {
@@ -111,6 +113,11 @@ footer {
 
 ::placeholder { 
 	color: #fec8a0;
+}
+
+::selection {
+	color: #fec8a0;
+  background: #251f54;
 }
 
 .see-all-btn-container {

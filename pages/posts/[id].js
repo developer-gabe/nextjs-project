@@ -10,7 +10,7 @@ export default function Post({ postData }) {
   })
 
   return (
-			<article>
+			<article className='blog-post'>
 				<div>
 					<div className='blog-post__header'>
 						<h1 className='blog-post__title'>{postData.title}</h1>
@@ -21,7 +21,7 @@ export default function Post({ postData }) {
 								{Math.ceil(postData.contentHtml.split(' ').length / 200) > 1 ? 'minute read' : 'minute read'}
 							</p>
 					</div>
-					<div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+					<div className='blog-post__content' dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
 				</div>
 				<div className='blog-post__tags'>
 					{postData.tags.map((tag) => ( 
