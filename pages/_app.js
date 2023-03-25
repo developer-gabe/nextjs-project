@@ -1,7 +1,8 @@
 import App from 'next/app'
 import Head from 'next/head'
-import '../styles/globals.css'
+import { GoogleAnalytics } from "nextjs-google-analytics";
 import Header from '../components/header'
+import '../styles/globals.css'
 import '../styles/blog-post.css'
 import '../styles/blog-list.css'
 import 'prism-themes/themes/prism-shades-of-purple.css';
@@ -14,18 +15,8 @@ function MyApp({ Component, pageProps }) {
 						<meta name="theme-color" content="#fdced0" media="(prefers-color-scheme: light)"></meta>
 						<meta name="theme-color" content="#14112e" media="(prefers-color-scheme: dark)"></meta>
 						<link rel="icon" href="/favicon.ico" />
-						<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLDTJTY8RC"></script>
-					<script
-							dangerouslySetInnerHTML={{
-								__html: `
-									window.dataLayer = window.dataLayer || [];
-									function gtag(){dataLayer.push(arguments);}
-									gtag('js', new Date());
-									gtag('config', 'G-RLDTJTY8RC');
-								`,
-							}}
-					/>
 					</Head>
+					<GoogleAnalytics trackPageViews />
 					<Header /> 
 					<Component {...pageProps} />
 					<footer>GabeSousa.com 2023</footer>
