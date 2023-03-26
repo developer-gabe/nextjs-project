@@ -27,7 +27,7 @@ class PhotoGrid extends Component {
 
     return (
       <div className="photo-grid__container">
-        <div className="grid">
+        <div className="photo-grid">
           {photos.map((photo) => (
             <Link href={`/photography/${photo.id}`} key={photo.id}>
                 <div
@@ -43,17 +43,18 @@ class PhotoGrid extends Component {
           ))}
         </div>
         <style jsx global>{`
-          .grid {
+
+          .photo-grid {
             display: grid;
             grid-gap: 10px;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
           }
 
           .photo-grid__card {
             display: flex;
             width: 100%;
             height: 100%;
-            min-height: 350px;
+            min-height: 225px;
             background-color: #eee;
             background-size: cover;
             background-repeat: no-repeat;
@@ -94,21 +95,23 @@ class PhotoGrid extends Component {
             background: #ffcbe5;
           }
 
-          @media (max-width: 900px) {
-            .grid {
+          @media (max-width: 800px) {
+            .photo-grid {
               grid-template-columns: 1fr 1fr;
             }
           }
 
 					@media (max-width: 675px) { 
-					.grid {
+					.photo-grid {
 						grid-template-columns: 1fr;
 						grid-gap: 20px
 					}
 
 					.photo-grid__card {
 						width: 100%;
+						height: 350px;
 					}
+					
 				}
 
 				@media (hover: none) { 

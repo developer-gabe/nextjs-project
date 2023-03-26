@@ -132,7 +132,14 @@ footer {
 	border-radius: 16px;
 	padding: .5rem 1rem;
 	font-size: .8rem;
-	transition: background ease-in-out 150ms;
+	transition: all ease-in-out 150ms;
+	border: 2px solid transparent;
+}
+
+.button:hover {
+	color: #251f54;
+	background: #fec8a0;
+	border: 2px solid #251f54;
 }
 
 .tags {
@@ -143,9 +150,6 @@ footer {
 	margin-left: 0 !important;
 }
 
-.button:hover {
-	background: #0b0b18;
-}
 
 .tag-list {
 	list-style: none;
