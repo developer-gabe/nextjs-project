@@ -2,6 +2,7 @@ import App from 'next/app'
 import Head from 'next/head'
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import Header from '../components/header'
+import Navigation from '../components/Navigation';
 import '../styles/globals.css'
 import '../styles/blog-post.css'
 import '../styles/blog-list.css'
@@ -17,7 +18,7 @@ function MyApp({ Component, pageProps }) {
 						<link rel="icon" href="/favicon.ico" />
 					</Head>
 					<GoogleAnalytics trackPageViews />
-					<Header /> 
+					<Navigation /> 
 					<Component {...pageProps} />
 					<footer>GabeSousa.com 2023</footer>
 				</>

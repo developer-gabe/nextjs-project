@@ -5,7 +5,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      navItems: [['Home', '/'], ['Photography', '/photography']],
+      navItems: [['Home', '/'], ['Photography', '/photography'], ['Lab', '/lab']],
       showMenu: false,
     };
   }
