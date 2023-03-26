@@ -7,7 +7,7 @@ const Navigation = () => {
   const [showViewMenu, setShowViewMenu] = useState(false);
   const [showGoMenu, setShowGoMenu] = useState(false);
   const [bgColor, setBgColor] = useState("#FFFFFF"); // Initialize the background color to white
-  const navItems = [['Home', '/'], ['Photography', '/photography']];
+  const navItems = [['Home', '/'], ['Photography', '/photography'], ['Posts', '/posts']];
   const presetColors = ['#e9d7fa', '#ffc9be', '#fec8a0']; // Add an array of preset colors
 
   const handleMenuClick = (menu) => {
@@ -101,14 +101,28 @@ const Navigation = () => {
         Go
         {showGoMenu && (
           <div className="dropdown">
-            <ul>
-              <li>
-								<Link href={"/"}>Home</Link>
-							</li>
-              <li>
-								<a href="mailto:gsousa09@icloud.com">Email Me</a>
-							</li>
-            </ul>
+          	<ul>
+          		<a href="https://instagram.com/saucygsous" target="_blank">
+          			<li>
+          				Instagram
+          			</li>
+          		</a>
+          		<a href="https://linkedin.com/in/gsous" target="_blank">
+          			<li>
+          				Linkedin
+          			</li>
+          		</a>
+          		<a href="https://github.com/developer-gabe" target="_blank">
+          			<li>
+          				Github
+          			</li>
+          		</a>
+          		<a href="mailto:gsousa09@icloud.com">
+          			<li>
+          				Email
+          			</li>
+          		</a>
+          	</ul>
           </div>
         )}
       </div>
