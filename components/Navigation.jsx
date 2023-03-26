@@ -6,9 +6,9 @@ const Navigation = () => {
   const [showEditMenu, setShowEditMenu] = useState(false);
   const [showViewMenu, setShowViewMenu] = useState(false);
   const [showGoMenu, setShowGoMenu] = useState(false);
-  const [bgColor, setBgColor] = useState("#FFFFFF"); // Initialize the background color to white
+  const [bgColor, setBgColor] = useState("#fec8a0");
   const navItems = [['Home', '/'], ['Photography', '/photography'], ['Posts', '/posts']];
-  const presetColors = ['#e9d7fa', '#ffc9be', '#fec8a0']; // Add an array of preset colors
+  const presetColors = ['#e9d7fa', '#ffc9be', '#fec8a0'];
 
   const handleMenuClick = (menu) => {
     switch (menu) {
@@ -55,7 +55,7 @@ const Navigation = () => {
 
   return (
     <div className="navigation">
-			<h1 className="navigation-logo">
+			<h1 className="navigation-logo" style={{fontFamily:'Poppins', fontWeight:'bold'}}>
 			<Link href={"/"}>
 				GS
 				</Link>
