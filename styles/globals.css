@@ -208,7 +208,7 @@ article {
 	border-radius: 16px;
 	padding: .5rem 1rem;
 	font-size: .8rem;
-	transition: all ease-in-out 150ms;
+	transition: all ease-in-out 80ms;
 	border: 2px solid transparent;
 }
 
@@ -250,6 +250,10 @@ article {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 1rem;
+}
+
+.bio h1 {
+	margin-top: 0;
 }
 
 iframe {
