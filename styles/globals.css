@@ -93,7 +93,7 @@ body {
 .navigation-logo {
 	margin: 0;
 	padding: 0 1rem 0 0 ;
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 }
 
 .navigation-logo a {
@@ -131,8 +131,11 @@ h2 {
 }
 
 h3 {
-	font-size: .9rem;
+	font-size: 1.25rem;
 	font-weight: 400;
+	letter-spacing: 1px;
+	margin: 0 auto -10px auto;
+	text-decoration: underline;
 }
 
 p {
@@ -166,8 +169,8 @@ footer {
 	font-size: .65rem;
 }
 
-.Home, .Posts, .bio-grid, article, .grid, .blog-post, .portfolio-page {
-	animation: slideIn 150ms ease-in-out;
+article {
+	animation: slideIn 350ms ease-in-out;
 }
 
 .search-input {
@@ -300,11 +303,11 @@ iframe {
 	}
 	
 	h2 {
-		font-size: 1rem;
+		font-size: 1.35rem;
 	}
 	
 	h3 {
-		font-size: .8rem;
+		font-size: 1.05rem;
 	}
 
 	.blog-post__tags {

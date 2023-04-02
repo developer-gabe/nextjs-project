@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 class PhotoGrid extends Component {
@@ -30,15 +31,7 @@ class PhotoGrid extends Component {
         <div className="photo-grid">
           {photos.map((photo) => (
             <Link href={`/photography/${photo.id}`} key={photo.id}>
-                <div
-								className="photo-grid__card"
-                  style={{
-                    backgroundImage: `url(${photo.src})`,
-                    backgroundSize: backgroundSize,
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                  }}
-                ></div>
+							<Image src= {photo.src} alt={photo.title} width={220} height={250} className="photo-grid__card" />
             </Link>
           ))}
         </div>
@@ -52,9 +45,6 @@ class PhotoGrid extends Component {
 
           .photo-grid__card {
             display: flex;
-            width: 100%;
-            height: 100%;
-            min-height: 225px;
             background-color: #eee;
             background-size: cover;
             background-repeat: no-repeat;
@@ -98,7 +88,14 @@ class PhotoGrid extends Component {
           @media (max-width: 800px) {
             .photo-grid {
               grid-template-columns: 1fr 1fr;
+							margin: auto;
             }
+
+						.photo-grid__card {
+							justify-self: center;
+							width: 100%;
+							height: 100%;
+						}
           }
 
 					@media (max-width: 675px) { 
@@ -108,8 +105,8 @@ class PhotoGrid extends Component {
 					}
 
 					.photo-grid__card {
+						height: 100%;
 						width: 100%;
-						height: 350px;
 					}
 					
 				}
