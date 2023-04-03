@@ -219,7 +219,7 @@ article {
 }
 
 .tags.button {
-	text-transform: uppercase;
+	text-transform: capitalize;
 }
 
 .tags:first-child {

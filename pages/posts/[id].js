@@ -24,7 +24,7 @@ export default function Post({ postData }) {
 					</div>
 					<div className='blog-post__content' dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
 				</div>
-				<div className='blog-post__tags'>
+				<div className='tag-list'>
 					{postData.tags.map((tag) => ( 
 						<Link key={tag} href={`/posts/?search=${tag}`} className="button tags">
 							{tag}
