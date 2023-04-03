@@ -6,7 +6,7 @@ class Bio extends Component {
 		this.state = {
 			name: "Gabe Sousa",
 			title: "Front-End Developer @ Abnormal Security",
-			bio: "I tried the college thing, but it wasn't for me so I taught myself web development, and developed a particular passion for the front-end. Why? Because these bespectacled eyes see things. These trap-beat loving ears hear things. This Brazilian born, mountain loving soul feels things - and I turn it all into immersive digital art",
+			bio: "These bespectacled eyes see things. These trap-beat loving ears hear things. This Brazilian born, mountain loving soul feels things - and I use it all to help create some ill things",
 			image: "/images/gabe.jpg",
 		};
 	}
@@ -33,7 +33,7 @@ class Bio extends Component {
 							display: grid;
 							grid-template-columns: 1fr 4fr;
 							grid-column-gap: 2rem;
-							align-items: last baseline;
+							align-items: center;
 							margin: 1rem auto;
 						}
 

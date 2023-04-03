@@ -15,11 +15,18 @@ export async function getStaticProps() {
 export default function Posts({ allPostsData }) {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredPosts = allPostsData.filter(
-    ({ title, tags }) =>
-      title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
+	console.log(allPostsData);
+
+	const filteredPosts = allPostsData.filter(({ title, tags }) => {
+		//.DS_Store ruining my life
+		if (!title || !tags) return false;
+		return (
+			title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+			tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+		);
+	});
+
+	console.log(filteredPosts, "filteredPosts");
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -62,7 +69,7 @@ export default function Posts({ allPostsData }) {
         <ul className="tag-list">
           {uniqueTags.slice(0,6).map((tag) => (
             <li key={tag} className="tag-list-item">
-              <Link href={`/posts?search=${tag}`} onClick={(event) => handleTagClick(event, tag)} className="tag button">{tag}</Link>
+              <Link href={`/posts?search=${tag}`} onClick={(event) => handleTagClick(event, tag)} className="tags button">{tag}</Link>
             </li>
           ))}
         </ul>
