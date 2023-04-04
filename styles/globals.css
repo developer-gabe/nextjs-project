@@ -19,7 +19,6 @@ body {
 
 .Home, .Posts, article, .portfolio-page, .single-photography-page, .Lab {
 	border: 2px solid #251f54;
-	background-color: #aeb9d9;
 	padding: 2rem;
 	box-shadow: 10px 10px;
 }
