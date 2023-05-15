@@ -8,13 +8,13 @@
 
 .blog-list li{
 padding: .5rem 0 0 0;
-border-bottom: 1px solid #251f54;
+border-bottom: 1px solid var(--primary-color);
 }
 
 .blog-list a {
 	text-decoration: none;
-	color: #251f54;
-	font-weight: 600;
+	color: var(--primary-color);
+	font-weight: 500;;
 }
 
 .blog-list a:hover {
