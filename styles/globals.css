@@ -282,6 +282,26 @@ footer {
 
 	}
 
+	@media screen and (max-width: 728px) {
+
+		body {
+			padding: 1rem 1.5rem 1rem 1rem;
+		}
+		
+		.bio {
+			grid-template-columns: 1fr !important;
+		}
+
+		.bio-image {
+			display: none;
+		}
+
+		.single-photography-page img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
 
 
 @keyframes slideIn {
