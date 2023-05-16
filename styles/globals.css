@@ -300,6 +300,16 @@ footer {
 			max-width: 100%;
 			height: auto;
 		}
+
+	.Home,
+	.Posts,
+	article,
+	.portfolio-page,
+	.single-photography-page,
+	.Lab {
+	padding: .75rem;
+	}
+	
 	}
 
 
