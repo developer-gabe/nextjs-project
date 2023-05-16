@@ -16,13 +16,13 @@ To get started with the `<Image>` component in our Next.js app, we first need to
 import Image from 'next/image'
 ```
 
-Once we've added the `<Image>` component to our toolkit, we can specify the source of our image, whether it's local or remote. For local images, we can import our .jpg, .png, or .webp files with code like this
+Once we've added the `<Image>` component to our toolkit, we can specify the source of our image, whether it's local or remote. For local images, we can import our .jpg, .png, or .webp files with code
 
 ```javascript
 import profilePic from '../public/me.jpg'
 ```
 
-Next.js will then automatically determine the width and height of our image based on the file we imported. These values are employed to prevent any layout shift while our image is loading. We can display our image with the `<Image>` component like so
+Next.js will then automatically determine the width and height of our image based on the file we imported. These values are employed to prevent any layout shift while our image is loading. We can display our image with the `<Image>` component
 
 ```javascript
 <Image
