@@ -219,7 +219,7 @@ footer {
 	border: 2px solid var(--button-border-color);
 	padding: 0.5rem 1rem;
 	font-size: 0.8rem;
-	transition: all ease-in-out 80ms;
+	transition: all ease-in-out 40ms;
 	}
 	
 	.button:hover {
