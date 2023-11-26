@@ -7,7 +7,7 @@ class Bio extends Component {
 			name: "Gabe Sousa",
 			title: "Front-End Developer @ Abnormal Security",
 			bio: "These bespectacled eyes see things. These trap-beat loving ears hear things. This Brazilian born, mountain loving soul feels things - and I use it all to help create some ill things",
-			image: "/images/gabe.jpg",
+			image: "/images/gabe.png",
 		};
 	}
 
@@ -26,7 +26,6 @@ class Bio extends Component {
 					{`
 						.bio-image { 
 							max-width: 220px;
-							border-radius: 26px;
 						}
 
 						.bio {

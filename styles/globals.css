@@ -28,6 +28,7 @@
 	--button-background-color: transparent;
 	--button-background-hover-color: #251f54;
 	}
+
 	
 	/* Global Styles */
 	body {
@@ -40,7 +41,7 @@
 	}
 	
 	img {
-	border: 2px solid var(--primary-color);
+	border: 3px solid var(--primary-color);
 	}
 	
 	h1, h2, h3, h4, h5, h6 {
