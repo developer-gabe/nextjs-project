@@ -13,7 +13,7 @@ export async function getStaticProps() {
 
 export default function Home ({ allPostsData }){	
   return (
-    <main className='Home'>
+    <main className='Home bevel-emboss'>
 			<Bio />
 			<section className='blog-list__section'>
 				<h2>Latest Posts:</h2>

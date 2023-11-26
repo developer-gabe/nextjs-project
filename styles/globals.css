@@ -10,12 +10,12 @@
 	}
 
 	:root {
-	--primary-color: #251f54;
+	--primary-color: #24414a;
 	--secondary-color: #ead9ed;
 	--tertiary-color: #ead9ed;
 	--quaternary-color: #120f09;
 	--quinary-color: #251f54;
-	--background-color: #ead9ed;
+	--background-color: #56818f;
 	--background-color-dark: #120f09;
 	--link-color: #251f54;
 	--link-hover-color: #fec8a0;
@@ -29,13 +29,24 @@
 	--button-background-hover-color: #251f54;
 	}
 
-	
+	.bevel-emboss {
+    background: #ffffff; /* Adjust the background color as needed */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 
+        2px 2px 5px rgba(0, 0, 0, 0.2), /* Outer shadow, adjust color and size as needed */
+        inset 1px 1px 2px rgba(255, 255, 255, 0.8), /* Top left inner highlight */
+        inset -1px -1px 2px rgba(0, 0, 0, 0.2); /* Bottom right inner shadow */
+    padding: 20px;
+    /* other styling as needed */
+}
+
 	/* Global Styles */
 	body {
 	margin: auto;
 	padding: 0.25rem;
 	font-family: 'Poppins', sans-serif;
-	background-color: var(--background-color);
+	/* background-color: var(--background-color); */
+	background: url('/images/background.png');
 	color: var(--primary-color);
 	letter-spacing: 0.6px;
 	}
@@ -96,7 +107,6 @@
 	.Lab {
 	border: 2px solid var(--primary-color);
 	padding: 2rem;
-	box-shadow: 10px 10px var(--primary-color);
 	background-color: var(--background-color);
 	max-width: 700px;
 	margin: auto;
