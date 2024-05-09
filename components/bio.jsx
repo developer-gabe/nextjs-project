@@ -45,6 +45,15 @@ class Bio extends Component {
 							margin-top: 0;
 						}
 
+
+						/* Mobile styles */
+						@media (max-width: 768px) {
+
+								.bio__text h1 {
+										font-size: 1.9rem; /* Smaller font size for mobile screens */
+								}
+						}
+
 						`}
 				</style>
 			</div>

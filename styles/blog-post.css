@@ -3,7 +3,7 @@
 }
 
 .blog-post__title {
-	margin: 0 auto;
+	margin: 16px auto auto auto;
 }
 
 .blog-post__reading-time {
@@ -73,6 +73,10 @@ ul, ol {
 
 	.blog-post__content {
 		margin-bottom: 2rem;
+	}
+
+	.blog-post__title {
+		font-size: 1.9rem;
 	}
 
 }
