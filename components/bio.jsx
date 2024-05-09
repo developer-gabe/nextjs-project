@@ -4,7 +4,7 @@ class Bio extends Component {
 	constructor(props) { 
 		super(props);
 		this.state = {
-			name: "Gabe Sousa",
+			name: "Gabe Araujo Sousa",
 			title: "Front-End Developer @ Abnormal Security",
 			bio: "These bespectacled eyes see things. These trap-beat loving ears hear things. This Brazilian born, mountain loving soul feels things - and I use it all to help create some ill things",
 			image: "/images/gabe.jpg",
@@ -18,7 +18,7 @@ class Bio extends Component {
 					<img src={this.state.image} alt="Gabe" className='bio-image'/>
 				</div>
 				<div className="bio__text">
-					<h1>Gabe Sousa</h1>
+					<h1>{this.state.name}</h1>
 					<p>{this.state.title}</p>
 					<p>{this.state.bio}</p>
 				</div>
