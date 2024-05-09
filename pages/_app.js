@@ -1,5 +1,6 @@
 import App from 'next/app'
 import Head from 'next/head'
+import { Analytics } from "@vercel/analytics/react"
 import Navigation from '../components/Navigation';
 import '../styles/globals.css'
 import '../styles/blog-post.css'
@@ -8,6 +9,7 @@ import 'prism-themes/themes/prism-shades-of-purple.css';
 
 function MyApp({ Component, pageProps }) {
 	return <app>
+						<Analytics />
 						<Head>
 							<title>Gabe Araujo Sousa | Front-End Developer</title>
 							<meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -18,6 +20,7 @@ function MyApp({ Component, pageProps }) {
 						<Navigation /> 
 						<Component {...pageProps} />
 						<footer>GARAUXO.com | 2024</footer>
+						<Analytics />
 				 </app>
 }
 
