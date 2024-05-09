@@ -28,9 +28,7 @@ export default function Photo({ photoData }) {
 			<div className='single-photography-page__content'>
 				<h1>{photoData.id}</h1>
 				
-				<p>Photo ID: {photoData.id}</p>
-
-				<p>Photo Name: {photoData.name}</p>
+				<p>File Name: {photoData.name}</p>
 
 			</div>
     </div>
