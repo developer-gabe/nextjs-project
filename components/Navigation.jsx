@@ -102,7 +102,7 @@ const Navigation = () => {
         {showGoMenu && (
           <div className="dropdown">
           	<ul>
-          		<a href="https://instagram.com/saucygsous" target="_blank">
+          		<a href="https://instagram.com/garauxo" target="_blank">
           			<li>
           				Instagram
           			</li>
