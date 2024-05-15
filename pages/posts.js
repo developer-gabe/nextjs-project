@@ -67,7 +67,7 @@ export default function Posts({ allPostsData }) {
           className="search-input"
         />
         <ul className="tag-list">
-          {uniqueTags.slice(0,6).map((tag) => (
+          {uniqueTags.slice(0,8).map((tag) => (
             <li key={tag} className="tag-list-item">
               <Link href={`/posts?search=${tag}`} onClick={(event) => handleTagClick(event, tag)} className="tags button">{tag}</Link>
             </li>
