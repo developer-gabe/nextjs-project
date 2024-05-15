@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
             </Head>
             <Navigation /> 
             <Component {...pageProps} />
-            <footer>GARAUXO.com | 2024</footer>
+          <footer>GARAUXO.com | {new Date().getFullYear()}</footer>
             <Analytics />
         </>
     );
