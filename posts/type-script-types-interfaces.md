@@ -4,7 +4,7 @@ date: '2024-05-14'
 tags: ['typescript', 'types', 'interfaces']
 ---
 
-TypeScript is certainly here to stay and in modern development setups it's nearly impossible to avoid. One of the main reasons it exists and is so popular is because of its type system. In this post I'll be breaking down some of the Types and Interfaces that TypeScript has to offer.
+TypeScript is certainly here to stay and in modern development setups it's nearly impossible to avoid. In this post I'll be breaking down some basic concepts of TypeScript, specifically Types & Interfaces and how they can benefit your codebase.
 
 ## Types
 
