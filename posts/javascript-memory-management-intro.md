@@ -69,7 +69,5 @@ function sendFormData(data) {
 
 After `handleFormSubmit` runs, `formData` is not needed anymore. And in our example since it's not reachable by any other parts of the code, our GC fairy will clean it up next time she's around.
 
-### Why Does It Matter?
-
-Grasping the intricacies of JavaScript memory management is crucial for developers aiming to enhance application performance and avoid memory leaks, which can lead to sluggish behavior or crashes. It empowers them with the tools needed for effective debugging and optimization, ensuring the code not only runs smoothly but is also scalable and maintainable. In essence, a solid understanding of how memory is allocated, used, and reclaimed is foundational to writing robust JavaScript code that adheres to best practices and delivers a seamless user experience.
+Understanding JavaScript memory management is crucial for developers aiming to enhance application performance and avoid memory leaks, which can lead to sluggish behavior or crashes. In essence, a solid understanding of how memory is allocated, used, and reclaimed is foundational to writing robust JavaScript that adheres to best practices and delivers ultimately the best user experience.
 
