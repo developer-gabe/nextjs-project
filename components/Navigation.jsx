@@ -57,7 +57,7 @@ const Navigation = () => {
     <div className="navigation">
 			<h1 className="navigation-logo" style={{fontFamily:'Poppins', fontWeight:'bold'}}>
 			<Link href={"/"}>
-				GS
+				garauxo
 				</Link>
 				</h1>
 
