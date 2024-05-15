@@ -26,7 +26,6 @@ class Bio extends Component {
 					{`
 						.bio-image { 
 							max-width: 220px;
-							border-radius: 26px;
 						}
 
 						.bio {

@@ -50,12 +50,8 @@ article {
 
 article img {
 	width: 100%;
-	border-radius: 16px;
 }
 
-pre {
-	border-radius: 16px;
-}
 
 ul, ol {
 	margin-left: 1rem;
