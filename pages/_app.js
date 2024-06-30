@@ -1,6 +1,8 @@
 import App from 'next/app'
 import Head from 'next/head'
 import { Analytics } from "@vercel/analytics/react"
+import { WindowProvider } from '../lib/WindowContext';
+import WindowManager from '../components/WindowManager';
 import Navigation from '../components/Navigation';
 import '../styles/globals.css'
 import '../styles/blog-post.css'
@@ -19,8 +21,11 @@ function MyApp({ Component, pageProps }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navigation /> 
-            <Component {...pageProps} />
-          <footer>GARAUXO.com | {new Date().getFullYear()}</footer>
+						<WindowProvider>
+						<WindowManager />  
+            	<Component {...pageProps} />
+						</WindowProvider>
+         		 <footer>GARAUXO.com | {new Date().getFullYear()}</footer>
             <Analytics />
         </>
     );

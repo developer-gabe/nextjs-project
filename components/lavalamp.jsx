@@ -6,8 +6,8 @@ const LavaLamp = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    let width = window.innerWidth;
-    let height = window.innerHeight;
+    let width = 350;
+    let height = 250;
 
     // Set canvas size to full screen
     canvas.width = width;
@@ -73,7 +73,7 @@ const LavaLamp = () => {
     return () => cancelAnimationFrame(animate);
   }, []);
 
-  return <canvas ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0, zIndex: -1 }} />;
+  return <canvas ref={canvasRef} />;
 };
 
 export default LavaLamp;

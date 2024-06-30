@@ -93,6 +93,7 @@ const Navigation = () => {
           <div className="dropdown">
             <ul>
               <li onClick={() => handleMenuClick("change-bg-color")}>Change BG Color</li>
+							<li onClick={() => handleMenuClick("change-bg-color")}>LavaLampr</li>
             </ul>
           </div>
         )}

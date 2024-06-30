@@ -92,7 +92,8 @@
 	article,
 	.portfolio-page,
 	.single-photography-page,
-	.Lab {
+	.Lab,
+	.MatchPredictor {
 	border: 2px solid var(--primary-color);
 	padding: 2rem;
 	box-shadow: 10px 10px var(--primary-color);
@@ -100,6 +101,17 @@
 	max-width: 700px;
 	margin: auto;
 	}
+
+.window-container {
+	border: 2px solid var(--primary-color);
+	padding: 2rem;
+	box-shadow: 10px 10px var(--primary-color);
+	background-color: var(--background-color);
+	max-width: 700px;
+	margin: auto;
+	position: absolute; 
+}
+
 	
 	/* Navigation */
 	.navigation {
@@ -121,6 +133,7 @@
 	.dropdown {
 	position: absolute;
 	top: 2.5rem;
+	z-index: 100;
 	border: 2px solid var(--primary-color);
 	background-color: var(--background-color);
 	box-shadow: 2px 2px var(--primary-color);
@@ -162,6 +175,20 @@
 	.navigation-logo a {
 	text-decoration: none;
 	color: var(--primary-color);
+	}
+
+	.window {
+		position: absolute;
+		cursor: move;
+	}
+
+	.ui-button {
+		position: absolute;
+		left: 5px;
+		top: 5px;
+		background: none !important;
+		outline: none;
+		border: none;
 	}
 
 	/* Footer */
