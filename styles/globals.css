@@ -201,11 +201,6 @@ footer {
 	max-width: 740px;
 	}
 	
-	/* Article */
-	article {
-	animation: slideIn 350ms ease-in-out;
-	}
-	
 	/* Search input */
 	.search-input {
 	width: 90%;
