@@ -1,9 +1,11 @@
+
+
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Bio from '../components/bio';
-import lavalamp from '../components/lavalamp';
 import { useWindows } from '../lib/WindowContext';
-import LavaLamp from '../components/lavalamp';
+import BlogPost from '../components/blog-post';
+
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -17,8 +19,8 @@ export async function getStaticProps() {
 export default function Home ({ allPostsData }) {
   const { openWindow } = useWindows();
 
-  const handleOpenPosts = () => {
-    openWindow(<LavaLamp/>, 'All Posts'); //Test
+  const handleOpenPost = (post) => {
+    openWindow(<BlogPost post={post} />, post.title);
   };
 
   return (
@@ -27,11 +29,11 @@ export default function Home ({ allPostsData }) {
       <section className='blog-list__section'>
         <h2>Latest Posts:</h2>
         <ul className="blog-list">
-          {allPostsData.slice(0,3).map(({ id, date, title }) => (
-            <li key={id} className="blog-list__item">
-              <Link href={`/posts/${id}`}>{title}</Link>
+          {allPostsData.slice(0,3).map((post) => (
+            <li key={post.id} className="blog-list__item" onClick={() => handleOpenPost(post)}>
+              {post.title}
               <p className='blog-post__date'>
-                {new Date(new Date(date).setDate(new Date(date).getDate() + 1))
+                {new Date(new Date(post.date).setDate(new Date(post.date).getDate() + 1))
                   .toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -42,7 +44,8 @@ export default function Home ({ allPostsData }) {
           ))}
         </ul>
         <div className='see-all-btn-container'>
-          <button onClick={handleOpenPosts} className="button">All Posts</button>
+          {/* Consider modifying or removing this if you handle all posts similarly */}
+          <Link href={'/posts'} className="button">All Posts</Link>
         </div>
       </section>
     </main>

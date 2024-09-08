@@ -102,17 +102,21 @@
 	margin: auto;
 	}
 
-.window-container {
-	border: 2px solid var(--primary-color);
-	padding: 2rem;
-	box-shadow: 10px 10px var(--primary-color);
-	background-color: var(--background-color);
-	max-width: 700px;
-	margin: auto;
-	position: absolute; 
+	.window-container {
+    border: 2px solid var(--primary-color);
+    padding: 2rem;
+    box-shadow: 3px 3px var(--primary-color); /* Less prominent shadow for inactive windows */
+    background-color: var(--background-color); /* More bland color for inactive windows */
+    max-width: 700px;
+    margin: auto;
+    position: absolute; 
 }
 
-	
+.active-window {
+    box-shadow: 10px 10px var(--primary-color); /* More prominent shadow for active window */
+    background-color: var(--background-color); /* More vibrant color for active window */
+}
+
 	/* Navigation */
 	.navigation {
 	display: flex;

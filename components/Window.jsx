@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { useWindows } from '../lib/WindowContext';
 
-const Window = ({ id, title, children, onClose, position, zIndex }) => {
+const Window = ({ id, title, children, onClose, position, zIndex, isActive }) => {
   const { bringToFront, updatePosition } = useWindows();
   const windowRef = useRef(null);
+
+	const windowClass = isActive ? "window-container active-window" : "window-container";
 
   useEffect(() => {
     const element = windowRef.current;

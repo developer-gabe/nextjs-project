@@ -20,9 +20,9 @@ function MyApp({ Component, pageProps }) {
                 <meta name="theme-color" content="#14112e" media="(prefers-color-scheme: dark)"></meta>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Navigation /> 
 						<WindowProvider>
-						<WindowManager />  
+							<WindowManager />  
+							<Navigation /> 
             	<Component {...pageProps} />
 						</WindowProvider>
          		 <footer>GARAUXO.com | {new Date().getFullYear()}</footer>
