@@ -6,7 +6,7 @@ class Bio extends Component {
 		this.state = {
 			name: "Gabe Araujo Sousa",
 			title: "Front-End Developer @ Abnormal Security",
-			bio: "These bespectacled eyes see things. These trap-beat loving ears hear things. This Brazilian born, mountain loving soul feels things - and I use it all to help create some ill things",
+			bio: "These bespectacled eyes see things. These trap-beat loving ears hear things. This Brazilian born, beach loving soul feels things - and I use it all to help create some ill things",
 			image: "/images/gabe.jpg",
 		};
 	}
