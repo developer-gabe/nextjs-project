@@ -8,7 +8,7 @@ const Navigation = () => {
   const [showGoMenu, setShowGoMenu] = useState(false);
   const [bgColor, setBgColor] = useState("#fec8a0");
   const navItems = [['Home', '/'], ['Photography', '/photography'], ['Posts', '/posts']];
-  const presetColors = ['#c9e8f0', '#ead9ed', '#f7c5c6'];
+  const presetColors = ['#fedec0', '#e9d9ed'];
 
   const handleMenuClick = (menu) => {
     switch (menu) {
