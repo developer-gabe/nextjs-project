@@ -15,7 +15,8 @@
 	--tertiary-color: #ead9ed;
 	--quaternary-color: #120f09;
 	--quinary-color: #251f54;
-	--background-color: #ead9ed;
+	--background-color: #0ba1e1;
+	--secondary-background-color: #0ba1e1b7;
 	--background-color-dark: #120f09;
 	--link-color: #251f54;
 	--link-hover-color: #fec8a0;
@@ -27,6 +28,8 @@
 	--button-text-hover-color: var(--secondary-color);
 	--button-background-color: transparent;
 	--button-background-hover-color: #251f54;
+	--box-shadow: -5px 5px var(--primary-color);
+	--box-shadow-secondary: 0px 0px var(--primary-color);
 	}
 	
 	/* Global Styles */
@@ -34,17 +37,21 @@
 	margin: auto;
 	padding: 0.25rem;
 	font-family: 'Poppins', sans-serif;
-	background-color: var(--background-color);
+	font-size: 1.25rem;
+	background-color: var(--secondary-background-color);
 	color: var(--primary-color);
 	letter-spacing: 0.6px;
 	}
 	
 	img {
-	border: 2px solid var(--primary-color);
+	border: 0px solid var(--primary-color);
+	border: 0px solid var(--primary-color);
+	border-radius: 15px;
+	box-shadow: var(--box-shadow);
 	}
 	
 	h1, h2, h3, h4, h5, h6 {
-	font-family: 'Abril Fatface', serif;
+	font-family: 'Abril Fatface', sans-serif;
 	}
 	
 	h1 {
@@ -67,7 +74,7 @@
 	}
 	
 	p {
-	font-size: 0.9rem;
+	font-size: 1rem;
 	font-weight: 400;
 	line-height: 2;
 	}
@@ -94,8 +101,9 @@
 	.single-photography-page,
 	.Lab {
 	border: 2px solid var(--primary-color);
+	border-radius: 15px;
 	padding: 2rem;
-	box-shadow: 10px 10px var(--primary-color);
+	box-shadow: var(--box-shadow);
 	background-color: var(--background-color);
 	max-width: 700px;
 	margin: auto;
@@ -115,7 +123,14 @@
 	}
 	
 	.menu-item {
-	padding-right: 1rem;
+	margin-right: 1rem;
+	border-bottom: 2px solid transparent;
+	width: fit-content;
+	transition: border-bottom 100ms ease-in-out;
+	}
+
+	.menu-item:hover {
+	border-bottom: 2px solid var(--primary-color);
 	}
 	
 	.dropdown {
@@ -123,7 +138,8 @@
 	top: 2.5rem;
 	border: 2px solid var(--primary-color);
 	background-color: var(--background-color);
-	box-shadow: 2px 2px var(--primary-color);
+	box-shadow: var(--box-shadow);
+	border-radius: 15px;
 	transform-origin: top left;
 	animation: slideDown 100ms ease-in-out;
 	}
@@ -183,8 +199,9 @@ footer {
 	.search-input {
 	width: 90%;
 	padding: 1rem;
-	background: var(--secondary-color);
+	background: var(--background-color);
 	border: 2px solid var(--primary-color);
+	border-radius: 15px;
 	color: var(--primary-color);
 	font-size: 1rem;
 	}
@@ -215,15 +232,19 @@ footer {
 	background: transparent;
 	color: var(--button-text-color);
 	border: 2px solid var(--button-border-color);
-	padding: 0.5rem 1rem;
-	font-size: 0.8rem;
-	transition: all ease-in-out 40ms;
+	box-shadow: var(--box-shadow);
+	border-radius: 15px;
+	padding: 8px 16px;
+	font-size: 0.9rem;
+	transition: all ease-in-out 100ms;
 	}
 	
+
+	
 	.button:hover {
-	color: var(--button-text-hover-color);
-	background: var(--button-background-hover-color);
+
 	border: 2px solid var(--button-border-hover-color);
+	box-shadow: var(--box-shadow-secondary);
 	}
 	
 	.tags.button {

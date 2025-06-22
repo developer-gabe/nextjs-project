@@ -17,6 +17,8 @@
     "react-dom": "18.2.0",
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
-    "remark-prism": "^1.3.6"
+    "remark-prism": "^1.3.6",
+    "tailwindcss": "^4.1.10",
+    "tw-animate-css": "^1.3.4"
   }
 }
