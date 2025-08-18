@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Image from 'next/image';
 
 class Bio extends Component {
 	constructor(props) { 
@@ -14,9 +15,7 @@ class Bio extends Component {
 	render() { 
 		return (
 			<div className="bio">
-				<div className="bio__image">
-					<img src={this.state.image} alt="Gabe" className='bio-image'/>
-				</div>
+
 				<div className="bio__text">
 					<h1>{this.state.name}</h1>
 					<p>{this.state.title}</p>
@@ -24,35 +23,56 @@ class Bio extends Component {
 				</div>
 				<style>
 					{`
-						.bio-image { 
-							max-width: 220px;
+						.bio {
+							margin: 0;
+							display: flex;
+							flex-direction: column;
+							align-items: flex-start;
+							gap: 1.5rem;
 						}
 
-						.bio {
-							display: grid;
-							grid-template-columns: 1fr 4fr;
-							grid-column-gap: 2rem;
-							align-items: center;
-							margin: 1rem auto;
+						.bio__image {
+							position: relative;
+							width: 120px;
+							height: 120px;
+							overflow: hidden;
+						}
+
+						.profile-image {
+							object-fit: cover;
+						}
+
+						.bio__text {
+							text-align: left;
 						}
 
 						.bio__text h1 {
-							margin-bottom: 0;
+							margin-bottom: 0.5rem;
+							font-size: 1.2rem;
 						}
 
 						.bio__text p {
 							margin-top: 0;
+							margin-bottom: 0.75rem;
+							font-size: 0.9rem;
+							line-height: 1.5;
 						}
-
 
 						/* Mobile styles */
 						@media (max-width: 768px) {
+							.bio__text h1 {
+								font-size: 1.1rem;
+							}
 
-								.bio__text h1 {
-										font-size: 1.9rem; /* Smaller font size for mobile screens */
-								}
+							.bio__text p {
+								font-size: 0.85rem;
+							}
+
+							.bio__image {
+								width: 100px;
+								height: 100px;
+							}
 						}
-
 						`}
 				</style>
 			</div>

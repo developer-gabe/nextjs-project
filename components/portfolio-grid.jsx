@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Image from 'next/image';
 
 
 class PortfolioGrid extends Component {
@@ -54,7 +55,13 @@ class PortfolioGrid extends Component {
       <div className="portfolio-grid">
         {projects.map((project) => (
           <div className="portfolio-grid__item" key={project.id}>
-            <img src={project.image} alt={project.title} />
+            <Image 
+              src={project.image} 
+              alt={project.title} 
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
 						<div className='portfolio-grid__item__overlay'>
 							<h2>{project.title}</h2>
 							<p>{project.description}</p>
@@ -64,10 +71,6 @@ class PortfolioGrid extends Component {
 
         <style jsx>
           {`
-
-						img {
-							height: 100%;
-						}
             .portfolio-grid {
               display: grid;
               grid-template-columns: repeat(3, 1fr);
@@ -82,6 +85,7 @@ class PortfolioGrid extends Component {
 							position: relative;
 							background: rgba(0,0,0,0.0);
 							transition: background ease-in-out 250ms;
+							overflow: hidden;
             }
 						.portfolio-grid__item__overlay {
 							color: #fff;

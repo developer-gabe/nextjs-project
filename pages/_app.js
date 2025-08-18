@@ -1,7 +1,6 @@
 import App from 'next/app'
 import Head from 'next/head'
 import { Analytics } from "@vercel/analytics/react"
-import Navigation from '../components/Navigation';
 import '../styles/globals.css'
 import '../styles/blog-post.css'
 import '../styles/blog-list.css'
@@ -18,7 +17,6 @@ function MyApp({ Component, pageProps }) {
                 <meta name="theme-color" content="#14112e" media="(prefers-color-scheme: dark)"></meta>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Navigation /> 
             <Component {...pageProps} />
           <footer>GARAUXO.com | {new Date().getFullYear()}</footer>
             <Analytics />
