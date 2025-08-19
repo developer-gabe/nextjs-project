@@ -15,6 +15,7 @@ const WindowManager = () => {
           onClose={() => closeWindow(window.id)}
           position={window.position}
           zIndex={window.zIndex}
+          isMinimized={window.isMinimized}
           bringToFront={() => bringToFront(window.id)}
         >
           {window.component}

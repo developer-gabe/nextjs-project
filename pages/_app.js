@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { WindowProvider } from '../lib/WindowContext';
 import WindowManager from '../components/WindowManager';
 import Navigation from '../components/Navigation';
+import Dock from '../components/Dock';
 import '../styles/globals.css'
 import '../styles/blog-post.css'
 import '../styles/blog-list.css'
@@ -24,6 +25,7 @@ function MyApp({ Component, pageProps }) {
 							<WindowManager />  
 							<Navigation /> 
             	<Component {...pageProps} />
+							<Dock />
 						</WindowProvider>
          		 <footer>GARAUXO.com | {new Date().getFullYear()}</footer>
             <Analytics />
