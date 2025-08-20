@@ -228,7 +228,15 @@ const Finder = ({ initialPath = '/' }) => {
             return;
         }
         
-        openWindow(<ComponentToOpen />, windowTitle);
+        // Pass header colors for specific apps
+        let headerColor = null;
+        if (componentName === 'Terminal') {
+          headerColor = '#000000'; // Pure black for terminal (Hyper Term Black theme)
+        } else if (componentName === 'CodeCanvas') {
+          headerColor = '#000000'; // Pure black for code canvas (Hyper Term Black theme)
+        }
+        
+        openWindow(<ComponentToOpen />, windowTitle, headerColor);
       } else if (fileName.endsWith('.jpg') || fileName.endsWith('.png') || fileName.endsWith('.gif')) {
         // Photo viewer for images
         const PhotoViewer = () => (

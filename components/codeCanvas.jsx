@@ -3,7 +3,7 @@ import styles from '../styles/CodeCanvas.module.css';
 
 function CodeCanvas() {
   const [html, setHtml] = useState('<h1>Hello World!</h1>\n<p>Start coding here...</p>');
-  const [css, setCss] = useState('body {\n  font-family: system-ui;\n  padding: 20px;\n}\n\nh1 {\n  color: #002c1c;\n}');
+  const [css, setCss] = useState('body {\n  color: #fff; \n  font-family: system-ui;\n  padding: 20px;\n}\n\nh1 {\n  color: #57abd2;\n}');
   const [js, setJs] = useState('console.log("CodeCanvas is ready!");');
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');

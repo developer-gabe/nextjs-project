@@ -141,12 +141,12 @@ const Terminal = ({ onFullScreen }) => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#0F0';
+      ctx.fillStyle = '#14FA50';
       ctx.font = fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {
         const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-        ctx.fillStyle = i % 3 === 0 ? '#00FF00' : '#008F11';
+        ctx.fillStyle = i % 3 === 0 ? '#14FA50' : '#98c379';
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {

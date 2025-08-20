@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useWindows } from '../lib/WindowContext';
 
-const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMinimized }) => {
+const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMinimized, headerColor }) => {
   const { bringToFront, updatePosition, minimizeWindow } = useWindows();
   const windowRef = useRef(null);
   const [isMaximized, setIsMaximized] = useState(false);
@@ -155,10 +155,16 @@ const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMi
           alignItems: 'center', 
           justifyContent: 'space-between', 
           padding: '12px 16px',
-          background: isActive 
-            ? 'linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(240,240,240,0.8))'
-            : 'linear-gradient(to bottom, rgba(245,245,245,0.6), rgba(225,225,225,0.6))',
-          borderBottom: '1px solid rgba(0,0,0,0.1)',
+          background: headerColor 
+            ? (isActive 
+                ? headerColor
+                : `${headerColor}dd`)
+            : (isActive 
+                ? 'rgba(255,255,255,0.9)'
+                : 'rgba(245,245,245,0.7)'),
+          borderBottom: headerColor 
+            ? '1px solid rgba(255,255,255,0.1)'
+            : '1px solid rgba(0,0,0,0.1)',
           borderTopLeftRadius: isMaximized ? '0' : '12px',
           borderTopRightRadius: isMaximized ? '0' : '12px',
           flexShrink: 0,
@@ -184,7 +190,7 @@ const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMi
               transition: 'all 0.2s ease'
             }}
             onMouseEnter={(e) => {
-              if (isActive) e.target.style.color = 'rgba(0,0,0,0.6)';
+              if (isActive) e.target.style.color = headerColor ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.6)';
             }}
             onMouseLeave={(e) => {
               e.target.style.color = 'transparent';
@@ -213,7 +219,7 @@ const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMi
               transition: 'all 0.2s ease'
             }}
             onMouseEnter={(e) => {
-              if (isActive) e.target.style.color = 'rgba(0,0,0,0.6)';
+              if (isActive) e.target.style.color = headerColor ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.6)';
             }}
             onMouseLeave={(e) => {
               e.target.style.color = 'transparent';
@@ -239,7 +245,7 @@ const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMi
               transition: 'all 0.2s ease'
             }}
             onMouseEnter={(e) => {
-              if (isActive) e.target.style.color = 'rgba(0,0,0,0.6)';
+              if (isActive) e.target.style.color = headerColor ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.6)';
             }}
             onMouseLeave={(e) => {
               e.target.style.color = 'transparent';
@@ -254,7 +260,9 @@ const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMi
           textAlign: 'center', 
           fontSize: '14px', 
           fontWeight: '500', 
-          color: isActive ? '#333' : '#666',
+          color: headerColor 
+            ? (isActive ? '#ffffff' : '#cccccc')
+            : (isActive ? '#333' : '#666'),
           margin: '0 12px',
           transition: 'color 0.2s ease'
         }}>

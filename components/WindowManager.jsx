@@ -20,6 +20,7 @@ const WindowManager = () => {
           zIndex={window.zIndex}
           isActive={window.zIndex === highestZIndex}
           isMinimized={window.isMinimized}
+          headerColor={window.headerColor}
           bringToFront={() => bringToFront(window.id)}
         >
           {window.component}
