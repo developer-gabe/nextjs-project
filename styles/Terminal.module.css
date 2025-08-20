@@ -1,0 +1,423 @@
+/* Terminal Component Styles */
+.terminal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #000000;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  overflow: hidden;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: #2d2d2d;
+  border-bottom: 1px solid #404040;
+  min-height: 32px;
+}
+
+.terminalControls {
+  display: flex;
+  gap: 6px;
+}
+
+.terminalButton {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.terminalTitle {
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 500;
+  text-align: center;
+  flex: 1;
+}
+
+.terminalContent {
+  flex: 1;
+  padding: 16px;
+  background: #000000;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.terminalOutput {
+  color: #00ff00;
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.welcomeText {
+  color: #888888;
+  margin-bottom: 16px;
+}
+
+.loadingOutput {
+  color: #00ff00;
+  font-family: inherit;
+  margin: 0;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+.promptSection {
+  margin-top: 24px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.warningText {
+  color: #ff4444;
+  font-weight: bold;
+  margin-bottom: 8px;
+  animation: blink 1s infinite;
+}
+
+.promptText {
+  color: #ffff00;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.userInput {
+  color: #ffffff;
+  background: #333333;
+  padding: 2px 4px;
+  margin-left: 4px;
+}
+
+.cursor {
+  color: #00ff00;
+  animation: blink 1s infinite;
+}
+
+.helpText {
+  color: #888888;
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* Fullscreen Terminal Styles */
+.fullscreenTerminal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+/* Matrix Effect Styles */
+.matrixCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 1;
+}
+
+.matrixOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.matrixHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #00ff00;
+}
+
+.fullscreenHeader {
+  background: #1a1a1a;
+  border-bottom: 2px solid #00ff00;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fullscreenTitle {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hackingIndicator {
+  color: #ff0000;
+  font-weight: bold;
+  animation: blink 0.8s infinite;
+}
+
+.terminalPath {
+  color: #00ff00;
+  font-family: inherit;
+  margin-left: 20px;
+}
+
+.exitButton {
+  background: #ff4444;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.exitButton:hover {
+  background: #ff6666;
+  transform: scale(1.1);
+}
+
+.codeEditor {
+  flex: 1;
+  display: flex;
+  background: #000000;
+  overflow: auto;
+}
+
+.lineNumbers {
+  background: #111111;
+  color: #666666;
+  padding: 20px 12px;
+  font-size: 12px;
+  line-height: 1.6;
+  border-right: 1px solid #333333;
+  user-select: none;
+  min-width: 50px;
+}
+
+.lineNumber {
+  text-align: right;
+  padding-right: 8px;
+}
+
+.codeContent {
+  flex: 1;
+  padding: 20px;
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.codeLine {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.codeText {
+  color: #ffffff;
+}
+
+/* Syntax highlighting */
+.codeText:has-text("import"),
+.codeText:has-text("export"),
+.codeText:has-text("const"),
+.codeText:has-text("useEffect"),
+.codeText:has-text("useState") {
+  color: #ff79c6;
+}
+
+.vulnerabilityMarker {
+  margin-left: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+.exploitMarker {
+  margin-left: 8px;
+  animation: bounce 2s infinite;
+}
+
+.terminalFooter {
+  background: #1a1a1a;
+  border-top: 1px solid #333333;
+  padding: 8px 20px;
+}
+
+.statusBar {
+  display: flex;
+  gap: 24px;
+  font-size: 11px;
+  color: #00ff00;
+}
+
+.statusItem {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.statusItem:before {
+  content: "● ";
+  color: #ff0000;
+}
+
+/* Animations */
+@keyframes textGlow {
+  0% { text-shadow: 0 0 5px #00ff00; }
+  100% { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+  60% { transform: translateY(-3px); }
+}
+
+/* Scrollbar styling for terminal */
+.terminalContent::-webkit-scrollbar,
+.codeEditor::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminalContent::-webkit-scrollbar-track,
+.codeEditor::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.terminalContent::-webkit-scrollbar-thumb,
+.codeEditor::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+.terminalContent::-webkit-scrollbar-thumb:hover,
+.codeEditor::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  /* Terminal mobile optimization */
+  .terminal {
+    font-size: 12px;
+  }
+
+  .terminalContent {
+    padding: 10px;
+  }
+
+  .terminalOutput {
+    font-size: 11px;
+  }
+
+  .promptSection {
+    padding: 15px 0;
+  }
+
+  .promptText {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .helpText {
+    font-size: 10px;
+    margin-top: 8px;
+  }
+
+  /* Matrix effect mobile optimization */
+  .matrixCanvas {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  .matrixOverlay {
+    padding: 0;
+  }
+
+  .matrixHeader {
+    padding: 15px 10px;
+    font-size: 12px;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+
+  .hackingIndicator {
+    font-size: 12px;
+  }
+
+  .terminalPath {
+    font-size: 10px;
+  }
+
+  .exitButton {
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+    font-size: 10px !important;
+    padding: 6px 12px !important;
+    z-index: 4 !important;
+  }
+
+  /* Fullscreen terminal mobile */
+  .fullscreenTerminal {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  .fullscreenHeader {
+    padding: 8px 12px;
+  }
+  
+  .codeContent {
+    padding: 12px;
+    font-size: 11px;
+  }
+  
+  .lineNumbers {
+    padding: 12px 8px;
+    font-size: 10px;
+    min-width: 40px;
+  }
+  
+  .statusBar {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

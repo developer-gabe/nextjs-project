@@ -1,345 +1,233 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import styles from '../styles/MusicVisualizer.module.css';
 
-const FluidNavigation = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [indicatorStyle, setIndicatorStyle] = useState({});
-  const [selectedGradient, setSelectedGradient] = useState('default');
-  const navRef = useRef(null);
+const MusicVisualizer = () => {
+  const canvasRef = useRef(null);
+  const [currentTheme, setCurrentTheme] = useState('cosmic');
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [intensity, setIntensity] = useState(50);
 
-  const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Contact', href: '#contact' }
-  ];
-
-  const gradientPresets = {
-    default: {
-      name: 'Rainbow Flow',
-      gradient: 'linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #ff9ff3)',
-      colors: ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#ff9ff3']
+  const themes = {
+    cosmic: {
+      name: 'Cosmic',
+      colors: ['#0c0920', '#15102f', '#8E2DE2', '#4A00E0'],
+      speed: 1
     },
-    darkOcean: {
-      name: 'Dark Ocean',
-      gradient: 'linear-gradient(-45deg, #373B44, #4286f4)',
-      colors: ['#373B44', '#4286f4']
-    },
-    coolBlues: {
-      name: 'Cool Blues',
-      gradient: 'linear-gradient(-45deg, #2193b0, #6dd5ed)',
-      colors: ['#2193b0', '#6dd5ed']
-    },
-    moonPurple: {
-      name: 'Moon Purple',
-      gradient: 'linear-gradient(-45deg, #4e54c8, #8f94fb)',
-      colors: ['#4e54c8', '#8f94fb']
+    ocean: {
+      name: 'Ocean',
+      colors: ['#001a2e', '#003459', '#007ea7', '#00a8e8'],
+      speed: 0.8
     },
     sunset: {
       name: 'Sunset',
-      gradient: 'linear-gradient(-45deg, #ff7e5f, #feb47b)',
-      colors: ['#ff7e5f', '#feb47b']
+      colors: ['#2d1b69', '#11998e', '#38ef7d', '#f093fb'],
+      speed: 1.2
+    },
+    fire: {
+      name: 'Fire',
+      colors: ['#1a0000', '#ff0000', '#ff6600', '#ffaa00'],
+      speed: 1.5
+    },
+    forest: {
+      name: 'Forest',
+      colors: ['#0d1b2a', '#415a77', '#778da9', '#e0e1dd'],
+      speed: 0.7
+    },
+    neon: {
+      name: 'Neon',
+      colors: ['#000000', '#ff006e', '#8338ec', '#3a86ff'],
+      speed: 2
     }
   };
 
   useEffect(() => {
-    updateIndicator(0);
-  }, []);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-  const updateIndicator = (index) => {
-    if (navRef.current) {
-      const activeItem = navRef.current.children[index];
-      if (activeItem) {
-        setIndicatorStyle({
-          width: `${activeItem.offsetWidth}px`,
-          transform: `translateX(${activeItem.offsetLeft}px)`,
+    const ctx = canvas.getContext('2d');
+    let animationId;
+
+    // Resize canvas to full container
+    const resizeCanvas = () => {
+      const container = canvas.parentElement;
+      canvas.width = container.clientWidth;
+      canvas.height = container.clientHeight;
+    };
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Animation variables
+    let particles = [];
+    let time = 0;
+    const theme = themes[currentTheme];
+
+    // Create particles for visualization
+    const createParticles = () => {
+      particles = [];
+      const particleCount = Math.floor(intensity / 2) + 10;
+      
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 3 + 1,
+          speedX: (Math.random() - 0.5) * theme.speed,
+          speedY: (Math.random() - 0.5) * theme.speed,
+          hue: Math.random() * 360,
+          life: Math.random() * 100
         });
       }
-    }
-  };
+    };
 
-  const handleMouseEnter = (index) => {
-    setActiveIndex(index);
-    updateIndicator(index);
-  };
+    createParticles();
 
-  const handleMouseLeave = () => {
-    updateIndicator(activeIndex);
-  };
+    // Main animation function
+    const animate = () => {
+      if (!isPlaying) {
+        animationId = requestAnimationFrame(animate);
+        return;
+      }
 
-  const handleClick = (index, e) => {
-    e.preventDefault();
-    setActiveIndex(index);
-    updateIndicator(index);
-  };
+      time += 0.01;
+      
+      // Clear canvas with fade effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  const handleGradientChange = (gradientKey) => {
-    setSelectedGradient(gradientKey);
-  };
+      // Create dynamic gradient background
+      const gradient = ctx.createRadialGradient(
+        canvas.width / 2 + Math.sin(time) * 100,
+        canvas.height / 2 + Math.cos(time) * 100,
+        0,
+        canvas.width / 2,
+        canvas.height / 2,
+        Math.max(canvas.width, canvas.height) / 2
+      );
+
+      theme.colors.forEach((color, index) => {
+        gradient.addColorStop(index / (theme.colors.length - 1), color + '40');
+      });
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Update and draw particles
+      particles.forEach((particle, index) => {
+        // Update particle position
+        particle.x += particle.speedX * (intensity / 50);
+        particle.y += particle.speedY * (intensity / 50);
+        particle.life -= 0.5;
+
+        // Wrap around edges
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+
+        // Reset particle if life is over
+        if (particle.life <= 0) {
+          particle.x = Math.random() * canvas.width;
+          particle.y = Math.random() * canvas.height;
+          particle.life = 100;
+        }
+
+        // Draw particle with glow effect
+        const alpha = particle.life / 100;
+        const size = particle.size * (intensity / 50) * alpha;
+        
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, size, 0, Math.PI * 2);
+        
+        // Create particle gradient
+        const particleGradient = ctx.createRadialGradient(
+          particle.x, particle.y, 0,
+          particle.x, particle.y, size * 3
+        );
+        
+        const colorIndex = Math.floor((particle.hue + time * 50) % theme.colors.length);
+        const color = theme.colors[colorIndex];
+        
+        particleGradient.addColorStop(0, color + Math.floor(alpha * 255).toString(16).padStart(2, '0'));
+        particleGradient.addColorStop(1, color + '00');
+        
+        ctx.fillStyle = particleGradient;
+        ctx.fill();
+      });
+
+      // Draw frequency bars (simulated)
+      const barCount = 64;
+      const barWidth = canvas.width / barCount;
+      
+      for (let i = 0; i < barCount; i++) {
+        const barHeight = Math.sin(time * 2 + i * 0.1) * (intensity / 2) + Math.random() * 20;
+        const hue = (i * 5 + time * 50) % 360;
+        
+        ctx.fillStyle = `hsla(${hue}, 70%, 50%, 0.3)`;
+        ctx.fillRect(
+          i * barWidth,
+          canvas.height - Math.abs(barHeight),
+          barWidth - 1,
+          Math.abs(barHeight)
+        );
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, [currentTheme, isPlaying, intensity]);
 
   return (
-    <div className="fluid-nav-container">
-      <nav 
-        className="fluid-nav" 
-        ref={navRef}
-      >
-        {navItems.map((item, index) => (
-          <a
-            key={index}
-            href={item.href}
-            className={`fluid-nav-item ${index === activeIndex ? 'active' : ''}`}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-            onClick={(e) => handleClick(index, e)}
+    <div className={styles.visualizer}>
+      <div className={styles.controls}>
+        <div className={styles.controlGroup}>
+          <label className={styles.controlLabel}>Theme:</label>
+          <select 
+            value={currentTheme} 
+            onChange={(e) => setCurrentTheme(e.target.value)}
+            className={styles.themeSelect}
           >
-            {item.label}
-          </a>
-        ))}
-        <div 
-          className="fluid-nav-indicator"
-          style={indicatorStyle}
-        />
-      </nav>
-      
-      {/* Gradient Picker */}
-      <div className="gradient-picker">
-        <h3>Choose a Gradient:</h3>
-        <div className="gradient-options">
-          {Object.entries(gradientPresets).map(([key, preset]) => (
-            <button
-              key={key}
-              className={`gradient-option ${selectedGradient === key ? 'active' : ''}`}
-              onClick={() => handleGradientChange(key)}
-              style={{ background: preset.gradient }}
-              title={preset.name}
-            >
-              <span className="gradient-name">{preset.name}</span>
-            </button>
-          ))}
+            {Object.entries(themes).map(([key, theme]) => (
+              <option key={key} value={key}>{theme.name}</option>
+            ))}
+          </select>
         </div>
+
+        <div className={styles.controlGroup}>
+          <label className={styles.controlLabel}>Intensity:</label>
+          <input
+            type="range"
+            min="10"
+            max="100"
+            value={intensity}
+            onChange={(e) => setIntensity(parseInt(e.target.value))}
+            className={styles.slider}
+          />
+          <span className={styles.sliderValue}>{intensity}%</span>
+        </div>
+
+        <button 
+          onClick={() => setIsPlaying(!isPlaying)}
+          className={`${styles.playButton} ${isPlaying ? styles.playing : styles.paused}`}
+        >
+          {isPlaying ? '⏸️' : '▶️'}
+        </button>
       </div>
 
-      <div className="fluid-nav-description">
-        <p>Interactive navigation with a flowing gradient indicator!</p>
-        <p>Choose a gradient preset above, then hover over the menu items to see the smooth sliding animation.</p>
-      </div>
-
-      <style jsx>{`
-        .fluid-nav-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 2rem;
-          padding: 2rem;
-          width: 100%;
-          max-width: 600px;
-          margin: 0 auto;
-        }
-
-        .fluid-nav {
-          position: relative;
-          display: flex;
-          background: #f8f9fa;
-          border-radius: 50px;
-          padding: 8px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-          border: 1px solid #e9ecef;
-        }
-
-        .fluid-nav-item {
-          position: relative;
-          padding: 12px 24px;
-          text-decoration: none;
-          color: #6c757d;
-          font-weight: 500;
-          font-size: 0.9rem;
-          border-radius: 25px;
-          transition: color 0.3s ease;
-          z-index: 2;
-          white-space: nowrap;
-        }
-
-        .fluid-nav-item:hover,
-        .fluid-nav-item.active {
-          color: #ffffff;
-        }
-
-        .fluid-nav-indicator {
-          position: absolute;
-          top: 8px;
-          left: 8px;
-          height: calc(100% - 16px);
-          background: ${gradientPresets[selectedGradient].gradient};
-          background-size: 400% 400%;
-          border-radius: 25px;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          z-index: 1;
-          box-shadow: 0 4px 20px rgba(${gradientPresets[selectedGradient].colors[0].replace('#', '')
-            .match(/.{2}/g).map(hex => parseInt(hex, 16)).join(', ')}, 0.4);
-          animation: fluidFlow 4s ease-in-out infinite;
-        }
-
-        @keyframes fluidFlow {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-        /* Gradient Picker Styles */
-        .gradient-picker {
-          text-align: center;
-          margin: 1rem 0;
-        }
-
-        .gradient-picker h3 {
-          margin-bottom: 1rem;
-          color: #495057;
-          font-size: 1.1rem;
-          font-weight: 600;
-        }
-
-        .gradient-options {
-          display: flex;
-          gap: 0.75rem;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-
-        .gradient-option {
-          position: relative;
-          width: 80px;
-          height: 40px;
-          border: 2px solid transparent;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          overflow: hidden;
-          background-size: 200% 200%;
-          animation: gradientPreview 3s ease-in-out infinite;
-        }
-
-        .gradient-option:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .gradient-option.active {
-          border-color: #495057;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .gradient-name {
-          position: absolute;
-          bottom: -25px;
-          left: 50%;
-          transform: translateX(-50%);
-          font-size: 0.7rem;
-          color: #6c757d;
-          white-space: nowrap;
-          font-weight: 500;
-        }
-
-        .gradient-option.active .gradient-name {
-          color: #495057;
-          font-weight: 600;
-        }
-
-        @keyframes gradientPreview {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .fluid-nav-description {
-          text-align: center;
-          max-width: 500px;
-          margin-top: 2rem;
-        }
-
-        .fluid-nav-description p {
-          margin: 0.5rem 0;
-          color: #6c757d;
-          font-size: 0.9rem;
-          line-height: 1.5;
-        }
-
-        @media (max-width: 768px) {
-          .fluid-nav {
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 6px;
-          }
-          
-          .fluid-nav-item {
-            padding: 10px 18px;
-            font-size: 0.85rem;
-          }
-          
-          .fluid-nav-container {
-            padding: 1rem;
-          }
-
-          .gradient-options {
-            gap: 0.5rem;
-          }
-
-          .gradient-option {
-            width: 70px;
-            height: 35px;
-          }
-
-          .gradient-picker h3 {
-            font-size: 1rem;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .fluid-nav {
-            flex-direction: column;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 250px;
-          }
-          
-          .fluid-nav-item {
-            padding: 12px 20px;
-            text-align: center;
-            border-radius: 8px;
-          }
-          
-          .fluid-nav-indicator {
-            border-radius: 8px;
-          }
-
-          .gradient-options {
-            gap: 0.4rem;
-          }
-
-          .gradient-option {
-            width: 60px;
-            height: 30px;
-          }
-
-          .gradient-name {
-            font-size: 0.65rem;
-            bottom: -22px;
-          }
-
-          .gradient-picker h3 {
-            font-size: 0.95rem;
-            margin-bottom: 0.75rem;
-          }
-        }
-      `}</style>
+      <canvas 
+        ref={canvasRef} 
+        className={styles.canvas}
+      />
     </div>
   );
 };
 
-export default FluidNavigation;
+export default MusicVisualizer;

@@ -1,0 +1,274 @@
+/* Resume Component Styles */
+.resume {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background: #ffffff;
+  font-family: var(--font-family-system);
+  line-height: 1.6;
+  color: #1d1d1f;
+  min-height: 100vh;
+}
+
+/* Header Section */
+.header {
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  color: #1d1d1f;
+  letter-spacing: -0.02em;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 14px;
+  color: #6e6e73;
+}
+
+.contactItem {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Content Sections */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.section {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: #1d1d1f;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1.1rem;
+}
+
+/* Experience Section */
+.experienceItem {
+  margin-bottom: 28px;
+}
+
+.experienceItem:last-child {
+  margin-bottom: 0;
+}
+
+.jobHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 16px;
+}
+
+.jobTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+
+.jobPeriod {
+  font-size: 14px;
+  color: #6e6e73;
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+.achievements {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.achievements li {
+  position: relative;
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #424245;
+  letter-spacing: -0.01em;
+}
+
+.achievements li:before {
+  content: '•';
+  color: #007aff;
+  font-weight: bold;
+  position: absolute;
+  left: -16px;
+}
+
+.achievements li:last-child {
+  margin-bottom: 0;
+}
+
+/* Skills Section */
+.skillsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skillCategory {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.skillCategoryTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0;
+  min-width: 140px;
+  letter-spacing: -0.01em;
+}
+
+.skillList {
+  font-size: 15px;
+  color: #424245;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* Education Section */
+.educationItem {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.educationItem:last-child {
+  margin-bottom: 0;
+}
+
+.schoolName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  letter-spacing: -0.01em;
+}
+
+.schoolLocation {
+  font-size: 14px;
+  color: #6e6e73;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.degree {
+  font-size: 15px;
+  color: #424245;
+  letter-spacing: -0.01em;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .resume {
+    padding: 24px 20px;
+  }
+  
+  .name {
+    font-size: 2rem;
+  }
+  
+  .contact {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .jobHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .jobPeriod {
+    white-space: normal;
+  }
+  
+  .skillCategory {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .skillCategoryTitle {
+    min-width: auto;
+  }
+  
+  .content {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume {
+    padding: 20px 16px;
+  }
+  
+  .name {
+    font-size: 1.75rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1rem;
+  }
+  
+  .achievements {
+    padding-left: 16px;
+  }
+  
+  .achievements li:before {
+    left: -12px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .resume {
+    padding: 20px;
+    box-shadow: none;
+    max-width: none;
+    min-height: auto;
+  }
+  
+  .header {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+  }
+  
+  .name {
+    font-size: 2rem;
+  }
+  
+  .content {
+    gap: 24px;
+  }
+  
+  .experienceItem {
+    margin-bottom: 20px;
+    break-inside: avoid;
+  }
+  
+  .section {
+    break-inside: avoid;
+  }
+}

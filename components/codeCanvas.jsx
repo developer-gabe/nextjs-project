@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import DOMPurify from 'dompurify';
+import styles from '../styles/CodeCanvas.module.css';
 
 function CodeCanvas() {
-  const [html, setHtml] = useState('');
-  const [css, setCss] = useState('');
-  const [js, setJs] = useState('');
+  const [html, setHtml] = useState('<h1>Hello World!</h1>\n<p>Start coding here...</p>');
+  const [css, setCss] = useState('body {\n  font-family: system-ui;\n  padding: 20px;\n}\n\nh1 {\n  color: #002c1c;\n}');
+  const [js, setJs] = useState('console.log("CodeCanvas is ready!");');
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');
 
@@ -99,135 +99,89 @@ function CodeCanvas() {
   }
 
   function runCode() {
-    try {
-      // Validate JavaScript
-      const jsValidation = validateJs(js);
-      if (!jsValidation.isValid) {
-        setError(jsValidation.errorMessage);
-        return;
-      }
-
-      // Sanitize HTML and CSS
-      const sanitizedHtml = sanitizeHtml(html);
-      const sanitizedCss = validateCss(css);
-
-      // Create secure output
-      const secureOutput = `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            ${cspHeader}
-            <style>
-              /* Restrict iframe content */
-              html, body {
-                margin: 0;
-                padding: 10px;
-                box-sizing: border-box;
-                max-width: 100%;
-                overflow-x: hidden;
-              }
-              ${sanitizedCss}
-            </style>
-          </head>
-          <body>
-            ${sanitizedHtml}
-            <script>
-              // Sandbox the JavaScript execution
-              try {
-                (function() {
-                  'use strict';
-                  // Remove access to window object
-                  const window = undefined;
-                  const document = {
-                    // Provide limited document API
-                    querySelector: function(selector) {
-                      return document.querySelectorAll(selector)[0];
-                    },
-                    querySelectorAll: function(selector) {
-                      return Array.from(document.getElementsByTagName('*')).filter(el => 
-                        el.matches(selector)
-                      );
-                    },
-                    getElementById: function(id) {
-                      return document.querySelector('#' + id);
-                    }
-                  };
-                  ${js}
-                })();
-              } catch (error) {
-                console.error('Runtime error:', error);
-              }
-            </script>
-          </body>
-        </html>
-      `;
-
-      setOutput(secureOutput);
-      setError('');
-    } catch (error) {
-      setError('An error occurred while processing the code.');
-      console.error('Error:', error);
-    }
+    setOutput(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>${css}</style>
+        </head>
+        <body>
+          ${html}
+          <script>
+            try {
+              ${js}
+            } catch (error) {
+              document.body.innerHTML += '<div style="color: red; font-family: monospace; margin-top: 20px;">Error: ' + error.message + '</div>';
+            }
+          </script>
+        </body>
+      </html>
+    `);
   }
 
+  // Auto-run on mount
+  useEffect(() => {
+    runCode();
+  }, []);
+
   return (
-    <div className="CodeCanvas">
-      <div className="CodeCanvas-editor">
-        <div className="CodeCanvas-editor__window">
-          <h3>HTML</h3>
+    <div className={styles.codeCanvas}>
+      <div className={styles.toolbar}>
+        <h1 className={styles.toolbarTitle}>CodeCanvas</h1>
+        <button className={styles.runButton} onClick={runCode}>
+          ▶ Run Code
+        </button>
+      </div>
+      
+      <div className={styles.editorContainer}>
+        <div className={`${styles.editorPanel} ${styles.htmlPanel}`}>
+          <div className={styles.panelHeader}>
+            <h3 className={styles.panelTitle}>HTML</h3>
+          </div>
           <textarea 
+            className={styles.editor}
             value={html} 
             onChange={handleHtmlChange}
-            placeholder="Enter HTML code here..."
-          ></textarea>
+            placeholder="Enter your HTML here..."
+          />
         </div>
-        <div className="CodeCanvas-editor__window">
-          <h3>CSS</h3>
+        
+        <div className={`${styles.editorPanel} ${styles.cssPanel}`}>
+          <div className={styles.panelHeader}>
+            <h3 className={styles.panelTitle}>CSS</h3>
+          </div>
           <textarea 
+            className={styles.editor}
             value={css} 
             onChange={handleCssChange}
-            placeholder="Enter CSS code here..."
-          ></textarea>
+            placeholder="Enter your CSS here..."
+          />
         </div>
-        <div className="CodeCanvas-editor__window">
-          <h3>JavaScript</h3>
+        
+        <div className={`${styles.editorPanel} ${styles.jsPanel}`}>
+          <div className={styles.panelHeader}>
+            <h3 className={styles.panelTitle}>JavaScript</h3>
+          </div>
           <textarea 
+            className={styles.editor}
             value={js} 
             onChange={handleJsChange}
-            placeholder="Enter JavaScript code here..."
-          ></textarea>
+            placeholder="Enter your JavaScript here..."
+          />
         </div>
-        <div className="CodeCanvas-output">
-          <h3>Output</h3>
-          {error && <div className="error-message">{error}</div>}
+        
+        <div className={styles.outputPanel}>
+          <div className={styles.panelHeader}>
+            <h3 className={styles.panelTitle}>Output</h3>
+          </div>
           <iframe 
+            className={styles.output}
             title="output" 
             srcDoc={output}
-            sandbox={sandboxAttributes}
-            loading="lazy"
-          ></iframe>
+            sandbox="allow-scripts"
+          />
         </div>
       </div>
-      <button onClick={runCode}>Run</button>
-
-      <style jsx>{`
-        .error-message {
-          background-color: #fee2e2;
-          color: #dc2626;
-          padding: 0.75rem;
-          margin: 0.5rem;
-          border-radius: 4px;
-          font-size: 0.9rem;
-          font-family: 'Poppins', sans-serif;
-        }
-
-        @media (prefers-color-scheme: dark) {
-          .error-message {
-            background-color: #7f1d1d;
-            color: #fecaca;
-          }
-        }
-      `}</style>
     </div>
   );
 }

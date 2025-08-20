@@ -1,0 +1,239 @@
+/* About This Mac Style Bio Component */
+.container {
+  padding: 0;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  font-family: var(--font-family-system);
+}
+
+.aboutWindow {
+  background: #ffffff;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.logoSection {
+  margin-bottom: 24px;
+}
+
+.profileImage {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  object-fit: cover;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.infoSection {
+  width: 100%;
+}
+
+.mainTitle {
+  font-family: var(--font-family-system);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.version {
+  font-family: var(--font-family-system);
+  font-size: 13px;
+  color: #86868b;
+  margin: 0 0 24px 0;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.systemInfo {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f5f5f7;
+}
+
+.infoRow:last-child {
+  border-bottom: none;
+}
+
+.infoLabel {
+  font-family: var(--font-family-system);
+  font-size: 13px;
+  color: #1d1d1f;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  min-width: 100px;
+}
+
+.infoValue {
+  font-family: var(--font-family-system);
+  font-size: 13px;
+  color: #1d1d1f;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-align: right;
+}
+
+.bioSection {
+  margin-bottom: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #f5f5f7;
+}
+
+.bioText {
+  font-family: var(--font-family-system);
+  font-size: 13px;
+  line-height: 1.5;
+  color: #1d1d1f;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.socialSection {
+  width: 100%;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  font-weight: 500;
+  border-radius: 6px;
+  font-family: var(--font-family-system);
+  letter-spacing: -0.01em;
+  font-size: 12px;
+}
+
+.socialLink:hover {
+  background: #e8e8ed;
+  transform: translateY(-1px);
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.socialName {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    min-height: 400px;
+  }
+
+  .aboutWindow {
+    padding: 32px 24px;
+    max-width: 400px;
+  }
+
+  .profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+  }
+
+  .mainTitle {
+    font-size: 1.5rem;
+  }
+
+  .version {
+    font-size: 12px;
+  }
+
+  .infoLabel,
+  .infoValue {
+    font-size: 12px;
+  }
+
+  .bioText {
+    font-size: 12px;
+  }
+
+  .socialLinks {
+    gap: 6px;
+  }
+
+  .socialLink {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .socialIcon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .socialName {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutWindow {
+    padding: 24px 20px;
+  }
+
+  .profileImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+  }
+
+  .mainTitle {
+    font-size: 1.3rem;
+  }
+
+  .socialLinks {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .socialLink {
+    width: 140px;
+    justify-content: center;
+  }
+}

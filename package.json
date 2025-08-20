@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.2.2",
-    "dompurify": "^3.2.6",
+    "axios": "^1.7.2",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "next": "^13.1.6",

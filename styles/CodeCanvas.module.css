@@ -1,0 +1,245 @@
+/* CodeCanvas Component Styles */
+.codeCanvas {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ffffff;
+  font-family: var(--font-family-system);
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: #f6f6f6;
+  border-bottom: 1px solid var(--border-color);
+  min-height: 40px;
+}
+
+.toolbarTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-color);
+  font-family: var(--font-family-system);
+  letter-spacing: -0.01em;
+}
+
+.runButton {
+  padding: 6px 16px;
+  background: var(--accent-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-family-system);
+  transition: all 0.15s ease;
+  letter-spacing: -0.01em;
+}
+
+.runButton:hover {
+  background: #003d28;
+  transform: translateY(-1px);
+}
+
+.runButton:active {
+  transform: translateY(0);
+}
+
+.editorContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  flex: 1;
+  background: var(--border-color);
+}
+
+.editorPanel {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.outputPanel {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8f8f8;
+  border-bottom: 1px solid var(--border-color);
+  min-height: 32px;
+}
+
+.panelTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-color);
+  font-family: var(--font-family-system);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.htmlPanel .panelTitle {
+  color: #e34c26;
+}
+
+.cssPanel .panelTitle {
+  color: #1572b6;
+}
+
+.jsPanel .panelTitle {
+  color: #f7df1e;
+}
+
+.outputPanel .panelTitle {
+  color: var(--accent-color);
+}
+
+.editor {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: var(--font-family-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--primary-color);
+  background: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.editor:focus {
+  background: #fafafa;
+}
+
+.editor::placeholder {
+  color: var(--muted-color);
+  font-style: italic;
+}
+
+.output {
+  flex: 1;
+  border: none;
+  background: #ffffff;
+  width: 100%;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .codeCanvas {
+    background: #1e1e1e;
+  }
+  
+  .toolbar {
+    background: #2d2d2d;
+    border-bottom-color: #424242;
+  }
+  
+  .toolbarTitle {
+    color: #ffffff;
+  }
+  
+  .editorContainer {
+    background: #424242;
+  }
+  
+  .editorPanel,
+  .outputPanel {
+    background: #1e1e1e;
+  }
+  
+  .panelHeader {
+    background: #2d2d2d;
+    border-bottom-color: #424242;
+  }
+  
+  .panelTitle {
+    color: #ffffff;
+  }
+  
+  .htmlPanel .panelTitle {
+    color: #ff6b6b;
+  }
+  
+  .cssPanel .panelTitle {
+    color: #4ecdc4;
+  }
+  
+  .jsPanel .panelTitle {
+    color: #ffe66d;
+  }
+  
+  .outputPanel .panelTitle {
+    color: #a8e6cf;
+  }
+  
+  .editor {
+    background: #1e1e1e;
+    color: #ffffff;
+  }
+  
+  .editor:focus {
+    background: #262626;
+  }
+  
+  .editor::placeholder {
+    color: #666666;
+  }
+  
+  .output {
+    background: #ffffff;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .toolbar {
+    padding: 6px 12px;
+  }
+  
+  .toolbarTitle {
+    font-size: 12px;
+  }
+  
+  .runButton {
+    padding: 4px 12px;
+    font-size: 12px;
+  }
+  
+  .editorContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr;
+  }
+  
+  .outputPanel {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  
+  .panelHeader {
+    padding: 6px 10px;
+  }
+  
+  .panelTitle {
+    font-size: 11px;
+  }
+  
+  .editor {
+    padding: 10px;
+    font-size: 12px;
+    min-height: 120px;
+  }
+}

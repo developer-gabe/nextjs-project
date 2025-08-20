@@ -1,0 +1,205 @@
+/* Dock Component Styles */
+.dock {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 8px 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  font-family: var(--font-family-system);
+}
+
+.dockItem {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  border: none;
+  background: rgba(255, 255, 255, 0.6);
+  color: #000000;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dockItem:hover {
+  transform: scale(1.15) translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.dockItem:active {
+  transform: scale(1.05) translateY(-2px);
+}
+
+.dockIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+}
+
+.separator {
+  width: 1px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.2);
+  margin: 8px 4px;
+  align-self: center;
+}
+
+.windowItem {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  border: none;
+  background: rgba(255, 255, 255, 0.6);
+  color: #000000;
+  font-weight: 600;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: var(--font-family-system);
+  letter-spacing: -0.01em;
+}
+
+.windowItem:hover {
+  transform: scale(1.15) translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.windowItemMinimized {
+  transform: scale(0.85);
+  opacity: 0.7;
+  background: rgba(200, 200, 200, 0.6);
+}
+
+.windowItemMinimized:hover {
+  transform: scale(1.0) translateY(-4px);
+  opacity: 1;
+}
+
+.minimizedIndicator {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ff3b30; /* macOS red */
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #34c759; /* macOS green */
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .dock {
+    background: rgba(30, 30, 30, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  .dockItem,
+  .windowItem {
+    background: rgba(60, 60, 60, 0.6);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .dockItem:hover,
+  .windowItem:hover {
+    background: rgba(80, 80, 80, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dockIcon {
+    color: #ffffff;
+  }
+  
+  .separator {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .windowItemMinimized {
+    background: rgba(100, 100, 100, 0.6);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .dock {
+    bottom: 10px;
+    padding: 6px 8px;
+    gap: 4px;
+    max-width: calc(100vw - 20px);
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Make dock border more subtle on mobile */
+  }
+
+  .dock::-webkit-scrollbar {
+    display: none; /* WebKit */
+  }
+  
+  .dockItem,
+  .windowItem {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    flex-shrink: 0; /* Prevent items from shrinking */
+    border: 1px solid rgba(0, 0, 0, 0.03); /* Make item borders more subtle on mobile */
+  }
+  
+  .windowItem {
+    font-size: 16px;
+  }
+  
+  .separator {
+    height: 32px;
+    margin: 8px 2px;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, 0.1); /* Make separator more subtle on mobile */
+    width: 0.5px; /* Make it thinner on mobile */
+  }
+
+  /* Ensure dock doesn't cause horizontal scroll */
+  .dockContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+  }
+}

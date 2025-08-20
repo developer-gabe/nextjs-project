@@ -1,0 +1,221 @@
+/* Finder Component Styles */
+.finderWindow {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ffffff;
+  font-family: var(--font-family-system);
+}
+
+.finderToolbar {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #f6f6f6;
+  border-bottom: 1px solid #e5e5e5;
+  gap: 12px;
+  min-height: 40px;
+}
+
+.finderBackBtn {
+  padding: 6px 12px;
+  background: #ffffff;
+  border: 1px solid #d1d1d6;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1d1d1f;
+  font-family: var(--font-family-system);
+  transition: all 0.15s ease;
+}
+
+.finderBackBtn:hover:not(:disabled) {
+  background: #f5f5f7;
+  border-color: #a1a1aa;
+}
+
+.finderBackBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.finderPath {
+  font-size: 13px;
+  color: #6e6e73;
+  font-weight: 500;
+  font-family: var(--font-family-mono);
+  letter-spacing: -0.01em;
+}
+
+.finderContent {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+.finderItems {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 16px;
+  max-width: 100%;
+}
+
+.finderItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+  user-select: none;
+}
+
+.finderItem:hover {
+  background: #f0f0f0;
+}
+
+.finderItem.selected {
+  background: #007aff;
+  color: white;
+}
+
+.finderItem.selected .finderItemName {
+  color: white;
+}
+
+.finderItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  color: #1d1d1f;
+}
+
+.finderItem.selected .finderItemIcon {
+  color: white;
+}
+
+.finderItemName {
+  font-size: 11px;
+  line-height: 1.2;
+  word-break: break-word;
+  max-width: 100%;
+  color: #1d1d1f;
+  font-weight: 500;
+  font-family: var(--font-family-system);
+  letter-spacing: -0.01em;
+}
+
+/* File type specific icon colors */
+.folderIcon {
+  color: #007aff;
+}
+
+.documentIcon {
+  color: #34c759;
+}
+
+.imageIcon {
+  color: #ff9500;
+}
+
+.webIcon {
+  color: #5856d6;
+}
+
+.appIcon {
+  color: #ff3b30;
+}
+
+.calculatorIcon {
+  color: #8e8e93;
+}
+
+.finderItem.selected .folderIcon,
+.finderItem.selected .documentIcon,
+.finderItem.selected .imageIcon,
+.finderItem.selected .webIcon,
+.finderItem.selected .appIcon,
+.finderItem.selected .calculatorIcon {
+  color: white;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .finderWindow {
+    background: #1e1e1e;
+  }
+  
+  .finderToolbar {
+    background: #2d2d2d;
+    border-bottom-color: #424242;
+  }
+  
+  .finderBackBtn {
+    background: #3a3a3c;
+    border-color: #545458;
+    color: #ffffff;
+  }
+  
+  .finderBackBtn:hover:not(:disabled) {
+    background: #48484a;
+    border-color: #6d6d70;
+  }
+  
+  .finderPath {
+    color: #98989d;
+  }
+  
+  .finderContent {
+    background: #1e1e1e;
+  }
+  
+  .finderItem:hover {
+    background: #2d2d2d;
+  }
+  
+  .finderItemIcon {
+    color: #ffffff;
+  }
+  
+  .finderItemName {
+    color: #ffffff;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .finderToolbar {
+    padding: 6px 12px;
+  }
+  
+  .finderContent {
+    padding: 12px;
+  }
+  
+  .finderItems {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 12px;
+  }
+  
+  .finderItem {
+    padding: 8px 4px;
+  }
+  
+  .finderItemName {
+    font-size: 10px;
+  }
+  
+  .finderBackBtn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  
+  .finderPath {
+    font-size: 12px;
+  }
+}
