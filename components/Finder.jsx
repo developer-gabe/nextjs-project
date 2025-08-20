@@ -6,6 +6,7 @@ import CodeCanvas from './codeCanvas';
 import MusicVisualizer from './lavalamp';
 import TextEditor from './TextEditor';
 import TerminalApp from './TerminalApp';
+import FPLDashboard from './FPLDashboard';
 
 const Finder = ({ initialPath = '/' }) => {
   const { openWindow } = useWindows();
@@ -155,7 +156,8 @@ const Finder = ({ initialPath = '/' }) => {
             'TextEditor.app': { type: 'file', name: 'TextEditor.app', component: 'TextEditor' },
             'CodeCanvas.app': { type: 'file', name: 'CodeCanvas.app', component: 'CodeCanvas' },
             'MusicVisualizer.app': { type: 'file', name: 'MusicVisualizer.app', component: 'MusicVisualizer' },
-            'Terminal.app': { type: 'file', name: 'Terminal.app', component: 'Terminal' }
+            'Terminal.app': { type: 'file', name: 'Terminal.app', component: 'Terminal' },
+            'FPLDashboard.app': { type: 'file', name: 'FPLDashboard.app', component: 'FPLDashboard' }
           }
         }
       }
@@ -217,6 +219,10 @@ const Finder = ({ initialPath = '/' }) => {
           case 'Terminal':
             ComponentToOpen = TerminalApp;
             windowTitle = "Terminal";
+            break;
+          case 'FPLDashboard':
+            ComponentToOpen = FPLDashboard;
+            windowTitle = "FPL Dashboard";
             break;
           default:
             return;
