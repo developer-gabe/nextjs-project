@@ -439,7 +439,7 @@
 		border-radius: 50%;
 		background-color: transparent;
 		color: var(--magazine-text);
-		text-decoration: none;
+	text-decoration: none;
 		transition: all 0.3s ease;
 		border: 1px solid transparent;
 	}
@@ -551,7 +551,7 @@
 	.search-results-list {
 		list-style: none;
 		padding: 0;
-		margin: 0;
+	margin: 0;
 	}
 	
 	.search-result-item {
@@ -560,7 +560,7 @@
 	
 	.search-result-item a {
 		display: block;
-		text-decoration: none;
+	text-decoration: none;
 		color: var(--magazine-text);
 		padding: 0.5rem;
 		border-radius: 4px;
@@ -1285,17 +1285,7 @@
 		}
 	}
 	
-	/* Lab Page Styles - Redesigned */
-	.lab-main {
-		max-width: 1400px;
-		margin: 0 auto;
-		padding: 3rem 2rem;
-		display: block !important;
-	}
-	
-	.lab-content {
-		width: 100%;
-	}
+
 	
 	.lab-header {
 		text-align: center;
@@ -2246,10 +2236,7 @@
 		padding: 2rem;
 	}
 
-	.carousel-demo {
-		background: #f8f9fa;
-		padding: 2rem 1rem;
-	}
+
 
 	/* Info Section */
 	.experiment-info {
@@ -2997,7 +2984,7 @@ footer {
 }
 
 /* Dark Mode Adjustments */
-@media (prefers-color-scheme: dark) {
+	@media (prefers-color-scheme: dark) {
 	.lab-section {
 		background-color: var(--magazine-hover);
 	}
@@ -3121,7 +3108,7 @@ footer {
 			-ms-overflow-style: none;
 			scrollbar-width: none;
 		}
-
+		
 		/* Legacy mobile styles */
 		.bio {
 			grid-template-columns: 1fr !important;
@@ -3136,13 +3123,13 @@ footer {
 			height: auto;
 		}
 
-		.Home,
-		.Posts,
-		article,
-		.portfolio-page,
-		.single-photography-page,
-		.Lab {
-			padding: .75rem;
+	.Home,
+	.Posts,
+	article,
+	.portfolio-page,
+	.single-photography-page,
+	.Lab {
+	padding: .75rem;
 		}
 	}
 

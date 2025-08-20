@@ -1,6 +1,6 @@
 import React from 'react';
 import { useWindows } from '../lib/WindowContext';
-import Window from './window';
+import Window from './Window';
 
 const WindowManager = () => {
   const { windows, closeWindow, bringToFront } = useWindows();

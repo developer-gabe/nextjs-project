@@ -100,10 +100,7 @@ export default function MagazineHeader({ allPostsData = [], showSearch = false }
                 <span className='nav-text'>PHOTOGRAPHY</span>
                 <span className='nav-underline'></span>
               </Link>
-              <Link href='/lab' className='nav-link'>
-                <span className='nav-text'>LAB</span>
-                <span className='nav-underline'></span>
-              </Link>
+
 
               {/* Mobile Menu Close Button */}
               <button 
@@ -138,14 +135,7 @@ export default function MagazineHeader({ allPostsData = [], showSearch = false }
                   <span>Photography</span>
                 </Link>
                 
-                <Link href='/lab' className='mobile-menu-link' onClick={() => setIsMobileMenuOpen(false)}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-4"></path>
-                    <polyline points="9,11 9,9 15,9 15,11"></polyline>
-                    <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
-                  </svg>
-                  <span>Lab</span>
-                </Link>
+
 
                 <div className='mobile-menu-separator'></div>
                 
