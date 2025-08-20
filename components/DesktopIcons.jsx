@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useWindows } from '../lib/WindowContext';
 import BlogListWindow from './blog-list-window';
-import PortfolioGrid from './portfolio-grid';
+import LabsGrid from './LabsGrid';
 import PhotoGrid from './photo-grid';
 import Finder from './Finder';
 
@@ -11,7 +11,7 @@ const DesktopIcons = ({ allPostsData, onOpenPost, onOpenBio }) => {
   const [iconPositions, setIconPositions] = useState({
     'about-me': { x: 50, y: 50 },
     'blog-posts': { x: 50, y: 150 },
-    'portfolio': { x: 50, y: 250 },
+    'labs': { x: 50, y: 250 },
     'photography': { x: 50, y: 350 },
     'finder': { x: 50, y: 450 }
   });
@@ -20,12 +20,22 @@ const DesktopIcons = ({ allPostsData, onOpenPost, onOpenBio }) => {
     openWindow(<BlogListWindow allPostsData={allPostsData} onOpenPost={onOpenPost} />, "Blog Posts");
   };
 
-  const handleOpenPortfolio = () => {
-    openWindow(<PortfolioGrid />, "Portfolio");
+  const handleOpenLabs = () => {
+    const LabsWindow = () => (
+      <div style={{ padding: '0', minHeight: '500px', minWidth: '700px' }}>
+        <LabsGrid />
+      </div>
+    );
+    openWindow(<LabsWindow />, "Labs & Experiments");
   };
 
   const handleOpenPhotography = () => {
-    openWindow(<PhotoGrid />, "Photography");
+    const PhotoWindow = () => (
+      <div style={{ padding: '0', minHeight: '500px', minWidth: '700px' }}>
+        <PhotoGrid />
+      </div>
+    );
+    openWindow(<PhotoWindow />, "Photography");
   };
 
   const handleOpenFinder = () => {
@@ -46,10 +56,10 @@ const DesktopIcons = ({ allPostsData, onOpenPost, onOpenBio }) => {
       onClick: handleOpenBlogList
     },
     {
-      id: 'portfolio',
-      name: 'Portfolio',
-      icon: '💼',
-      onClick: handleOpenPortfolio
+      id: 'labs',
+      name: 'Labs',
+      icon: '🧪',
+      onClick: handleOpenLabs
     },
     {
       id: 'photography',

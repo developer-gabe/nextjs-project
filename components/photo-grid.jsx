@@ -26,99 +26,68 @@ class PhotoGrid extends Component {
       this.state;
 
     return (
-      <div className="photo-grid__container">
-        <div className="photo-grid">
+      <div style={{ padding: '20px', height: '100%', overflow: 'auto' }}>
+        <h2 style={{ margin: '0 0 20px 0', fontSize: '24px', color: '#333' }}>Photography</h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '16px',
+          maxWidth: '100%'
+        }}>
           {photos.map((photo) => (
-            <Link href={`/photography/${photo.id}`} key={photo.id}>
-							<Image src= {photo.src} alt={photo.title} width={220} height={250} className="photo-grid__card" />
+            <Link href={`/photography/${photo.id}`} key={photo.id} style={{ textDecoration: 'none' }}>
+              <div style={{
+                position: 'relative',
+                borderRadius: '8px',
+                overflow: 'hidden',
+                border: '2px solid #ddd',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                backgroundColor: '#f5f5f5'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.02)';
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+                e.currentTarget.style.borderColor = '#007AFF';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.borderColor = '#ddd';
+              }}>
+                <Image 
+                  src={photo.src} 
+                  alt={photo.title || 'Photography'} 
+                  width={200} 
+                  height={200} 
+                  style={{
+                    width: '100%',
+                    height: '200px',
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
+                />
+                {photo.title && (
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '0',
+                    left: '0',
+                    right: '0',
+                    background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+                    color: 'white',
+                    padding: '20px 12px 12px',
+                    fontSize: '14px',
+                    fontWeight: '500'
+                  }}>
+                    {photo.title}
+                  </div>
+                )}
+              </div>
             </Link>
           ))}
         </div>
-        <style jsx global>{`
-
-          .photo-grid {
-            display: grid;
-            grid-gap: 10px;
-            grid-template-columns: 1fr 1fr 1fr;
-          }
-
-          .photo-grid__card {
-            display: flex;
-            background-color: #eee;
-            background-size: cover;
-            background-repeat: no-repeat;
-            justify-self: center;
-            border: 2px solid #251f54;
-            cursor: pointer;
-            overflow: hidden;
-          }
-
-          .photo-grid__card div {
-            width: 100%;
-            height: 100%;
-          }
-
-          .photo-grid__controls {
-            display: block;
-            text-align: center;
-            margin: auto;
-          }
-
-          button {
-            padding: 0.5rem 2rem;
-            margin: auto;
-            background: #d496b1;
-            border: none;
-            color: #fff;
-            font-size: 2rem;
-            margin: 0 0.5rem;
-            width: 100px;
-            transition: all ease-in-out 250ms;
-          }
-
-          button:hover {
-            transform: scale(0.9);
-          }
-
-          button:active {
-            background: #ffcbe5;
-          }
-
-          @media (max-width: 800px) {
-            .photo-grid {
-              grid-template-columns: 1fr 1fr;
-							margin: auto;
-            }
-
-						.photo-grid__card {
-							justify-self: center;
-							width: 100%;
-							height: 100%;
-						}
-          }
-
-					@media (max-width: 675px) { 
-					.photo-grid {
-						grid-template-columns: 1fr;
-						grid-gap: 20px
-					}
-
-					.photo-grid__card {
-						height: 100%;
-						width: 100%;
-					}
-					
-				}
-
-				@media (hover: none) { 
-					.photo-grid__card:hover { 
-						transform: scale(1);
-					}
-				}
-				`}
-			</style>
-		</div>
-);
+      </div>
+    );
 }
 
 }
