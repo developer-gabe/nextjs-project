@@ -1,11 +1,11 @@
 import React from 'react';
 import { useWindows } from '../lib/WindowContext';
 import Bio from './bio';
-import LabsGrid from './LabsGrid';
-import PhotoGrid from './photo-grid';
+import BlogListWindow from './blog-list-window';
 import Finder from './Finder';
+import styles from '../styles/Dock.module.css';
 
-const Dock = () => {
+const Dock = ({ allPostsData = [], onOpenPost }) => {
   const { windows, bringToFront, restoreWindow, openWindow } = useWindows();
 
   const handleWindowClick = (windowId) => {
@@ -22,181 +22,114 @@ const Dock = () => {
     {
       id: 'finder',
       name: 'Finder',
-      icon: '📁',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+        </svg>
+      ),
       onClick: () => openWindow(<Finder />, "Finder")
     },
     {
       id: 'about-me',
       name: 'About Me',
-      icon: '👨‍💻',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      ),
       onClick: () => openWindow(<Bio />, "About Me")
     },
     {
       id: 'blog-posts',
       name: 'Blog Posts',
-      icon: '📝',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14,2 14,8 20,8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10,9 9,9 8,9"></polyline>
+        </svg>
+      ),
       onClick: () => {
-        // Create a simple blog posts component for the dock
-        const SimpleBlogList = () => (
-          <div style={{ padding: '20px' }}>
-            <h2>Blog Posts</h2>
-            <p>Click on the desktop Blog Posts icon to see all posts, or navigate to the Posts page to view them.</p>
-          </div>
-        );
-        openWindow(<SimpleBlogList />, "Blog Posts");
+        if (allPostsData && allPostsData.length > 0 && onOpenPost) {
+          openWindow(<BlogListWindow allPostsData={allPostsData} onOpenPost={onOpenPost} />, "Blog Posts");
+        } else {
+          // Fallback for when blog data isn't available
+          const SimpleBlogList = () => (
+            <div style={{ padding: '20px', fontFamily: 'var(--font-family-system)' }}>
+              <h2>Blog Posts</h2>
+              <p>Visit the home page or Posts section to view all blog posts.</p>
+            </div>
+          );
+          openWindow(<SimpleBlogList />, "Blog Posts");
+        }
       }
     },
     {
-      id: 'labs',
-      name: 'Labs',
-      icon: '🧪',
-      onClick: () => {
-        const LabsWindow = () => (
-          <div style={{ padding: '0', minHeight: '500px', minWidth: '700px' }}>
-            <LabsGrid />
-          </div>
-        );
-        openWindow(<LabsWindow />, "Labs & Experiments");
-      }
+      id: 'applications',
+      name: 'Applications',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="3" y="3" width="6" height="6" rx="2"></rect>
+          <rect x="15" y="3" width="6" height="6" rx="2"></rect>
+          <rect x="3" y="15" width="6" height="6" rx="2"></rect>
+          <rect x="15" y="15" width="6" height="6" rx="2"></rect>
+        </svg>
+      ),
+      onClick: () => openWindow(<Finder initialPath="/Applications" />, "Applications")
     },
     {
-      id: 'photography',
-      name: 'Photography',
-      icon: '📸',
-      onClick: () => {
-        const PhotoWindow = () => (
-          <div style={{ padding: '0', minHeight: '500px', minWidth: '700px' }}>
-            <PhotoGrid />
-          </div>
-        );
-        openWindow(<PhotoWindow />, "Photography");
-      }
+      id: 'pictures',
+      name: 'Pictures',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <polyline points="21,15 16,10 5,21"></polyline>
+        </svg>
+      ),
+      onClick: () => openWindow(<Finder initialPath="/Pictures" />, "Pictures")
     }
   ];
 
-  const dockStyle = {
-    position: 'fixed',
-    bottom: '20px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    display: 'flex',
-    gap: '4px',
-    background: 'rgba(0, 0, 0, 0.6)',
-    backdropFilter: 'blur(20px)',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
-    borderRadius: '20px',
-    padding: '8px 12px',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-    zIndex: 9999
-  };
-
-  const dockItemStyle = {
-    width: '56px',
-    height: '56px',
-    borderRadius: '12px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '28px',
-    transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-    position: 'relative',
-    border: 'none',
-    background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8))',
-    color: '#333',
-    fontWeight: 'normal',
-    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
-    backdropFilter: 'blur(10px)',
-    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
-  };
-
-  const minimizedIndicator = {
-    position: 'absolute',
-    bottom: '-4px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: '4px',
-    height: '4px',
-    borderRadius: '50%',
-    background: '#ff6b6b'
-  };
-
-  const activeIndicator = {
-    position: 'absolute',
-    bottom: '-4px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: '6px',
-    height: '6px',
-    borderRadius: '50%',
-    background: '#51cf66'
-  };
-
   return (
-    <div style={dockStyle}>
+    <div className={styles.dock}>
       {/* Static dock applications */}
       {dockApps.map((app) => (
         <button
           key={app.id}
-          style={dockItemStyle}
+          className={styles.dockItem}
           onClick={app.onClick}
-          onMouseEnter={(e) => {
-            e.target.style.transform = 'scale(1.2) translateY(-8px)';
-            e.target.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.9)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.transform = 'scale(1) translateY(0)';
-            e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8)';
-          }}
           title={app.name}
         >
-          {app.icon}
+          <div className={styles.dockIcon}>
+            {app.icon}
+          </div>
         </button>
       ))}
 
       {/* Separator if there are open windows */}
       {windows.length > 0 && (
-        <div style={{
-          width: '1px',
-          height: '48px',
-          background: 'rgba(255, 255, 255, 0.4)',
-          margin: '4px 6px',
-          alignSelf: 'center'
-        }} />
+        <div className={styles.separator} />
       )}
 
       {/* Open windows */}
       {windows.map((window, index) => (
         <button
           key={window.id}
-          style={{
-            ...dockItemStyle,
-            transform: window.isMinimized ? 'scale(0.85)' : 'scale(1)',
-            opacity: window.isMinimized ? 0.7 : 1,
-            background: window.isMinimized 
-              ? 'linear-gradient(145deg, rgba(200, 200, 200, 0.8), rgba(180, 180, 180, 0.7))'
-              : 'linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8))'
-          }}
+          className={`${styles.windowItem} ${window.isMinimized ? styles.windowItemMinimized : ''}`}
           onClick={() => handleWindowClick(window.id)}
-          onMouseEnter={(e) => {
-            const baseScale = window.isMinimized ? 0.85 : 1;
-            e.target.style.transform = `scale(${baseScale * 1.15}) translateY(-6px)`;
-            e.target.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.9)';
-          }}
-          onMouseLeave={(e) => {
-            const baseScale = window.isMinimized ? 0.85 : 1;
-            e.target.style.transform = `scale(${baseScale}) translateY(0)`;
-            e.target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8)';
-          }}
           title={window.title}
         >
           {window.title.charAt(0).toUpperCase()}
           
           {/* Indicator for window state */}
           {window.isMinimized ? (
-            <div style={minimizedIndicator}></div>
+            <div className={styles.minimizedIndicator}></div>
           ) : window.zIndex === Math.max(...windows.map(w => w.zIndex)) ? (
-            <div style={activeIndicator}></div>
+            <div className={styles.activeIndicator}></div>
           ) : null}
         </button>
       ))}

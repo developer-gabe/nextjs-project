@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from '../styles/Bio.module.css';
 
 class Bio extends Component {
 	constructor(props) { 
@@ -12,22 +13,43 @@ class Bio extends Component {
 				{
 					name: "GitHub",
 					url: "https://github.com/developer-gabe",
-					icon: "⚫"
+					icon: (
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+							<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+						</svg>
+					)
 				},
 				{
 					name: "LinkedIn", 
 					url: "https://linkedin.com/in/gsous",
-					icon: "⚫"
+					icon: (
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+							<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+							<rect x="2" y="9" width="4" height="12"></rect>
+							<circle cx="4" cy="4" r="2"></circle>
+						</svg>
+					)
 				},
 				{
 					name: "Instagram",
 					url: "https://instagram.com/garauxo",
-					icon: "⚫"
+					icon: (
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+							<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+							<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+							<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+						</svg>
+					)
 				},
 				{
 					name: "Email",
 					url: "mailto:gsousa09@icloud.com",
-					icon: "⚫"
+					icon: (
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+							<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+							<polyline points="22,6 12,13 2,6"></polyline>
+						</svg>
+					)
 				}
 			]
 		};
@@ -35,196 +57,54 @@ class Bio extends Component {
 
 	render() { 
 		return (
-			<div className="bio-container">
-				<div className="bio-card">
-					<div className="bio__image">
-						<img src={this.state.image} alt="Gabe" className='bio-image'/>
-						<div className="image-overlay"></div>
+			<div className={styles.container}>
+				<div className={styles.aboutWindow}>
+					<div className={styles.logoSection}>
+						<img src={this.state.image} alt="Gabe" className={styles.profileImage}/>
 					</div>
-					<div className="bio__content">
-						<div className="bio__text">
-							<h1>{this.state.name}</h1>
-							<p className="bio__title">{this.state.title}</p>
-							<p className="bio__description">{this.state.bio}</p>
+					
+					<div className={styles.infoSection}>
+						<h1 className={styles.mainTitle}>{this.state.name}</h1>
+						<p className={styles.version}>{this.state.title}</p>
+						
+						<div className={styles.systemInfo}>
+							<div className={styles.infoRow}>
+								<span className={styles.infoLabel}>Experience:</span>
+								<span className={styles.infoValue}>5+ years</span>
+							</div>
+							<div className={styles.infoRow}>
+								<span className={styles.infoLabel}>Specialties:</span>
+								<span className={styles.infoValue}>React, NextJS, JavaScript</span>
+							</div>
+							<div className={styles.infoRow}>
+								<span className={styles.infoLabel}>Company:</span>
+								<span className={styles.infoValue}>Invincible Stack LLC</span>
+							</div>
 						</div>
-						<div className="bio__social">
-							<h3>Connect with me</h3>
-							<div className="social-links">
+						
+						<div className={styles.bioSection}>
+							<p className={styles.bioText}>{this.state.bio}</p>
+						</div>
+						
+						<div className={styles.socialSection}>
+							<div className={styles.socialLinks}>
 								{this.state.socialLinks.map((link, index) => (
 									<a
 										key={index}
 										href={link.url}
 										target={link.name !== "Email" ? "_blank" : "_self"}
 										rel={link.name !== "Email" ? "noopener noreferrer" : ""}
-										className="social-link"
+										className={styles.socialLink}
 										title={link.name}
 									>
-										<span className="social-icon">{link.icon}</span>
-										<span className="social-name">{link.name}</span>
+										<span className={styles.socialIcon}>{link.icon}</span>
+										<span className={styles.socialName}>{link.name}</span>
 									</a>
 								))}
 							</div>
 						</div>
 					</div>
 				</div>
-				<style>
-					{`
-						.bio-container {
-							padding: 2rem;
-							min-height: 400px;
-							display: flex;
-							align-items: center;
-							justify-content: center;
-						}
-
-						.bio-card {
-							background: white;
-							padding: 2rem;
-							display: grid;
-							grid-template-columns: 300px 1fr;
-							grid-gap: 2rem;
-							align-items: center;
-							max-width: 800px;
-							width: 100%;
-						}
-
-						.bio__image {
-							border: 2px solid #000;
-							overflow: hidden;
-						}
-
-						.bio-image { 
-							width: 100%;
-							height: auto;
-							display: block;
-							border: none;
-						}
-
-						.image-overlay {
-							display: none;
-						}
-
-						.bio__content {
-							color: #000;
-						}
-
-						.bio__text h1 {
-							font-size: 2.5rem;
-							margin-bottom: 0.5rem;
-							color: #000;
-							font-weight: 700;
-						}
-
-						.bio__title {
-							font-size: 1.1rem;
-							color: #666;
-							margin-bottom: 1rem;
-							font-weight: 500;
-							text-transform: uppercase;
-							letter-spacing: 1px;
-						}
-
-						.bio__description {
-							font-size: 1rem;
-							line-height: 1.6;
-							color: #333;
-							margin-bottom: 2rem;
-						}
-
-						.bio__social h3 {
-							color: #000;
-							margin-bottom: 1rem;
-							font-size: 1.2rem;
-							font-weight: 600;
-						}
-
-						.social-links {
-							display: flex;
-							gap: 1rem;
-							flex-wrap: wrap;
-						}
-
-						.social-link {
-							display: flex;
-							align-items: center;
-							gap: 0.5rem;
-							padding: 0.75rem 1rem;
-							background: white;
-							border: 2px solid #000;
-							color: #000;
-							text-decoration: none;
-							transition: all 0.2s ease;
-							font-weight: 500;
-						}
-
-						.social-link:hover {
-							background: #000;
-							color: white;
-						}
-
-						.social-icon {
-							font-size: 1rem;
-						}
-
-						.social-name {
-							font-size: 0.9rem;
-							font-weight: 500;
-						}
-
-						/* Mobile styles */
-						@media (max-width: 768px) {
-							.bio-container {
-								padding: 1rem;
-							}
-
-							.bio-card {
-								grid-template-columns: 1fr;
-								padding: 1.5rem;
-								text-align: center;
-							}
-
-							.bio__text h1 {
-								font-size: 2rem;
-							}
-
-							.bio__title {
-								font-size: 1rem;
-							}
-
-							.bio__description {
-								font-size: 0.9rem;
-								margin-bottom: 1.5rem;
-							}
-
-							.social-links {
-								justify-content: center;
-								gap: 0.75rem;
-							}
-
-							.social-link {
-								padding: 0.6rem 0.8rem;
-								font-size: 0.8rem;
-							}
-
-							.social-icon {
-								font-size: 0.9rem;
-							}
-						}
-
-						@media (max-width: 480px) {
-							.social-links {
-								flex-direction: column;
-								align-items: center;
-							}
-
-							.social-link {
-								width: 200px;
-								justify-content: center;
-							}
-						}
-
-						`}
-				</style>
 			</div>
 		);
 	}

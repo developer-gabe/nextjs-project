@@ -62,7 +62,7 @@ const Navigation = () => {
 
   return (
     <div className="navigation">
-      <h1 className="navigation-logo" style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>
+      				<h1 className="navigation-logo" style={{ fontWeight: 'bold' }}>
         <Link href="/">
           garauxo
         </Link>
