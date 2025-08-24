@@ -1,0 +1,239 @@
+/* Window Component Styles - Clean and Organized */
+
+/* Window Component Styles - Clean and Organized */
+
+/* Main Window Container */
+.windowContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  min-height: 200px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Window Background - Frosted Glass Effect */
+.windowContainer {
+  background: rgba(255, 255, 255, var(--window-bg-opacity));
+  backdrop-filter: blur(var(--window-blur)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--window-blur)) saturate(200%);
+  border: 1px solid rgba(0, 0, 0, var(--border-opacity));
+  border-radius: 16px;
+}
+
+/* Active Window Enhancements */
+.windowContainer.active {
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15), 
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+}
+
+/* Inactive Window */
+.windowContainer.inactive {
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.1), 
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+/* Resizing State */
+.windowContainer.resizing {
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.25), 
+    0 0 0 2px rgba(0, 123, 255, 0.4) inset;
+  transition: none;
+}
+
+/* Maximized Window */
+.windowContainer.maximized {
+  border-radius: 0;
+}
+
+/* Title Bar */
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  height: 52px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  cursor: move;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+/* Title Bar Background - Frosted Glass */
+.titleBar {
+  background: rgba(255, 255, 255, var(--titlebar-bg-opacity));
+  backdrop-filter: blur(var(--titlebar-blur)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--titlebar-blur)) saturate(200%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Bar with Custom Header Color */
+.titleBar.customHeader {
+  background: rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Window Controls Container */
+.windowControls {
+  display: flex;
+  gap: 8px;
+}
+
+/* Individual Window Control Buttons */
+.windowControl {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: transparent;
+  transition: all 0.2s ease;
+}
+
+/* Close Button */
+.windowControl.close {
+  background: #FF5F57;
+}
+
+.windowControl.close:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Minimize Button */
+.windowControl.minimize {
+  background: #FFBD2E;
+}
+
+.windowControl.minimize:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Maximize Button */
+.windowControl.maximize {
+  background: #28CA42;
+}
+
+.windowControl.maximize:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Inactive Window Controls */
+.windowControl.inactive {
+  background: #ccc;
+}
+
+/* Window Title */
+.windowTitle {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 12px;
+  transition: color 0.2s ease;
+}
+
+.windowTitle {
+  color: #333;
+}
+
+.windowTitle.customHeader {
+  color: #ffffff;
+}
+
+/* Window Content Area */
+.windowContent {
+  flex: 1;
+  background: rgba(255, 255, 255, var(--content-bg-opacity));
+  backdrop-filter: blur(var(--content-blur)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--content-blur)) saturate(200%);
+  overflow: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Resize Handles */
+.resizeHandle {
+  position: absolute;
+  background: transparent;
+  z-index: 5;
+}
+
+.resizeHandle.right {
+  right: 0;
+  top: 12px;
+  bottom: 16px;
+  width: 6px;
+  cursor: ew-resize;
+}
+
+.resizeHandle.bottom {
+  bottom: 0;
+  left: 12px;
+  right: 16px;
+  height: 6px;
+  cursor: ns-resize;
+}
+
+.resizeHandle.corner {
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  cursor: se-resize;
+  z-index: 10;
+}
+
+/* Resize Corner Visual Indicator */
+.resizeCorner {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(
+    -45deg, 
+    transparent 30%, 
+    rgba(0, 0, 0, 0.1) 30%, 
+    rgba(0, 0, 0, 0.1) 35%, 
+    transparent 35%, 
+    transparent 65%, 
+    rgba(0, 0, 0, 0.1) 65%, 
+    rgba(0, 0, 0, 0.1) 70%, 
+    transparent 70%
+  );
+  pointer-events: none;
+  border-radius: 0 0 16px 0;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .windowContainer {
+    border-radius: 12px;
+    min-width: 280px;
+    min-height: 180px;
+  }
+  
+  .titleBar {
+    height: 44px;
+    padding: 10px 14px;
+  }
+  
+  .windowTitle {
+    font-size: 13px;
+  }
+  
+  .windowControl {
+    width: 14px;
+    height: 14px;
+  }
+}

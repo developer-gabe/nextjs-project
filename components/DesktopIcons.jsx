@@ -7,11 +7,11 @@ const DesktopIcons = ({ allPostsData, onOpenPost, onOpenBio }) => {
   const { openWindow } = useWindows();
   const [draggedIcon, setDraggedIcon] = useState(null);
   const [iconPositions, setIconPositions] = useState({
-    'about-me': { x: 1200, y: 50 },
-    'blog-posts': { x: 1200, y: 150 },
-    'applications': { x: 1200, y: 250 },
-    'pictures': { x: 1200, y: 350 },
-    'finder': { x: 1200, y: 450 }
+    'about-me': { x: 50, y: 50 },
+    'blog-posts': { x: 50, y: 150 },
+    'applications': { x: 50, y: 250 },
+    'pictures': { x: 50, y: 350 },
+    'finder': { x: 50, y: 450 }
   });
 
   const handleOpenBlogList = () => {

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useWindows } from '../lib/WindowContext';
+import styles from '../styles/Window.module.css';
 
 const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMinimized, headerColor, size }) => {
   const { bringToFront, updatePosition, minimizeWindow } = useWindows();
@@ -16,7 +17,7 @@ const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMi
     height: size?.height || 600 
   });
 
-	const windowClass = isActive ? "window-container active-window" : "window-container";
+	const windowClass = `${styles.windowContainer} ${isActive ? styles.active : styles.inactive} ${isResizing ? styles.resizing : ''} ${isMaximized ? styles.maximized : ''}`;
 
   useEffect(() => {
     const element = windowRef.current;
@@ -127,162 +128,54 @@ const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMi
   };
 
   const windowStyle = {
-    position: 'absolute !important',
     left: isMaximized ? 0 : position.x,
     top: isMaximized ? 0 : position.y,
     width: isMaximized ? '100vw' : currentSize.width,
     height: isMaximized ? '100vh' : currentSize.height,
     zIndex: zIndex,
-    display: 'flex',
-    flexDirection: 'column',
-    background: 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(20px)',
-    border: '1px solid rgba(0, 0, 0, 0.1)',
-    borderRadius: isMaximized ? '0' : '12px',
-    boxShadow: isResizing
-      ? '0 25px 50px rgba(0,0,0,0.3), 0 0 0 2px rgba(0,123,255,0.5) inset'
-      : isActive 
-        ? '0 20px 40px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.8) inset'
-        : '0 10px 25px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.6) inset',
-    overflow: 'hidden',
-    minWidth: '300px',
-    minHeight: '200px',
-    padding: "0px",
-    transition: isResizing ? 'none' : 'box-shadow 0.2s ease'
   };
 
   return (
-    <div ref={windowRef} className="window-container" style={windowStyle} onClick={handleClick}>
+    <div ref={windowRef} className={windowClass} style={windowStyle} onClick={handleClick}>
       <div 
-        className="title-bar" 
+        className={`${styles.titleBar} ${headerColor ? styles.customHeader : ''}`}
         onMouseDown={handleTitleBarMouseDown}
-        style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between', 
-          padding: '12px 16px',
-          background: headerColor 
-            ? (isActive 
-                ? headerColor
-                : `${headerColor}dd`)
-            : (isActive 
-                ? 'rgba(255,255,255,0.9)'
-                : 'rgba(245,245,245,0.7)'),
-          borderBottom: headerColor 
-            ? '1px solid rgba(255,255,255,0.1)'
-            : '1px solid rgba(0,0,0,0.1)',
-          borderTopLeftRadius: isMaximized ? '0' : '12px',
-          borderTopRightRadius: isMaximized ? '0' : '12px',
-          flexShrink: 0,
-          height: '52px',
-          boxSizing: 'border-box',
-          cursor: 'move'
+        style={{
+          borderTopLeftRadius: isMaximized ? '0' : '16px',
+          borderTopRightRadius: isMaximized ? '0' : '16px',
         }}>
-        <div style={{ display: 'flex', gap: '8px' }}>
+        <div className={styles.windowControls}>
           <button 
+            className={`${styles.windowControl} ${styles.close} ${!isActive ? styles.inactive : ''}`}
             onClick={(e) => { e.stopPropagation(); onClose(); }}
-            style={{
-              width: '12px',
-              height: '12px',
-              border: 'none',
-              borderRadius: '50%',
-              cursor: 'pointer',
-              background: isActive ? '#FF5F57' : '#ccc',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '8px',
-              color: 'transparent',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              if (isActive) e.target.style.color = headerColor ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.6)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = 'transparent';
-            }}
             title="Close"
           >
             ×
           </button>
           <button 
+            className={`${styles.windowControl} ${styles.minimize} ${!isActive ? styles.inactive : ''}`}
             onClick={(e) => { 
               e.stopPropagation(); 
               handleMinimize(); 
-            }}
-            style={{
-              width: '12px',
-              height: '12px',
-              border: 'none',
-              borderRadius: '50%',
-              cursor: 'pointer',
-              background: isActive ? '#FFBD2E' : '#ccc',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '8px',
-              color: 'transparent',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              if (isActive) e.target.style.color = headerColor ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.6)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = 'transparent';
             }}
             title="Minimize"
           >
             −
           </button>
           <button 
+            className={`${styles.windowControl} ${styles.maximize} ${!isActive ? styles.inactive : ''}`}
             onClick={(e) => { e.stopPropagation(); handleMaximize(); }}
-            style={{
-              width: '12px',
-              height: '12px',
-              border: 'none',
-              borderRadius: '50%',
-              cursor: 'pointer',
-              background: isActive ? '#28CA42' : '#ccc',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '8px',
-              color: 'transparent',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              if (isActive) e.target.style.color = headerColor ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.6)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.color = 'transparent';
-            }}
             title={isMaximized ? "Restore" : "Maximize"}
           >
             {isMaximized ? '⤓' : '+'}
           </button>
         </div>
-        <div style={{ 
-          flex: 1, 
-          textAlign: 'center', 
-          fontSize: '14px', 
-          fontWeight: '500', 
-          color: headerColor 
-            ? (isActive ? '#ffffff' : '#cccccc')
-            : (isActive ? '#333' : '#666'),
-          margin: '0 12px',
-          transition: 'color 0.2s ease'
-        }}>
+        <div className={`${styles.windowTitle} ${headerColor ? styles.customHeader : ''}`}>
           {title}
         </div>
         <div style={{ width: '60px' }}></div>
       </div>
-      <div className="content" style={{
-        flex: 1,
-        background: 'rgba(255, 255, 255, 0.9)',
-        overflow: 'auto',
-        padding: '0',
-        boxSizing: 'border-box'
-      }}>
+      <div className={styles.windowContent}>
         {children}
       </div>
       
@@ -291,62 +184,24 @@ const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMi
         <>
           {/* Right resize handle */}
           <div
-            style={{
-              position: 'absolute',
-              right: 0,
-              top: '12px',
-              bottom: '16px',
-              width: '6px',
-              cursor: 'ew-resize',
-              background: 'transparent',
-              zIndex: 5
-            }}
+            className={`${styles.resizeHandle} ${styles.right}`}
             onMouseDown={(e) => handleResizeStart(e, 'right')}
           />
           
           {/* Bottom resize handle */}
           <div
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: '12px',
-              right: '16px',
-              height: '6px',
-              cursor: 'ns-resize',
-              background: 'transparent',
-              zIndex: 5
-            }}
+            className={`${styles.resizeHandle} ${styles.bottom}`}
             onMouseDown={(e) => handleResizeStart(e, 'bottom')}
           />
           
           {/* Bottom-right corner resize handle */}
           <div
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              right: 0,
-              width: '16px',
-              height: '16px',
-              cursor: 'se-resize',
-              background: 'transparent',
-              zIndex: 10
-            }}
+            className={`${styles.resizeHandle} ${styles.corner}`}
             onMouseDown={(e) => handleResizeStart(e, 'right bottom')}
           />
           
           {/* Visual resize indicator in bottom-right corner */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '2px',
-              right: '2px',
-              width: '12px',
-              height: '12px',
-              background: 'linear-gradient(-45deg, transparent 30%, rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.1) 35%, transparent 35%, transparent 65%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0.1) 70%, transparent 70%)',
-              pointerEvents: 'none',
-              borderRadius: '0 0 12px 0'
-            }}
-          />
+          <div className={styles.resizeCorner} />
         </>
       )}
     </div>
