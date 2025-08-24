@@ -1,14 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useWindows } from '../lib/WindowContext';
 
-const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMinimized, headerColor }) => {
+const Window = ({ id, title, children, onClose, position, zIndex, isActive, isMinimized, headerColor, size }) => {
   const { bringToFront, updatePosition, minimizeWindow } = useWindows();
   const windowRef = useRef(null);
   const [isMaximized, setIsMaximized] = useState(false);
-  const [originalSize, setOriginalSize] = useState({ width: 800, height: 600 });
+  const [originalSize, setOriginalSize] = useState({ 
+    width: size?.width || 800, 
+    height: size?.height || 600 
+  });
   const [originalPosition, setOriginalPosition] = useState({ x: 0, y: 0 });
   const [isResizing, setIsResizing] = useState(false);
-  const [currentSize, setCurrentSize] = useState({ width: 800, height: 600 });
+  const [currentSize, setCurrentSize] = useState({ 
+    width: size?.width || 800, 
+    height: size?.height || 600 
+  });
 
 	const windowClass = isActive ? "window-container active-window" : "window-container";
 
