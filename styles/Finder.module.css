@@ -123,6 +123,31 @@
   color: #ff9500;
 }
 
+/* Photo Preview Styles */
+.photoPreview {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photoThumbnail {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.15s ease;
+}
+
+.fallbackIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .webIcon {
   color: #5856d6;
 }
@@ -181,6 +206,10 @@
   .finderItemIcon {
     color: #ffffff;
   }
+
+  .photoThumbnail {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
   
   .finderItemName {
     color: #ffffff;
@@ -214,8 +243,18 @@
     padding: 4px 8px;
     font-size: 12px;
   }
-  
+
   .finderPath {
     font-size: 12px;
+  }
+
+  .photoPreview {
+    width: 28px;
+    height: 28px;
+  }
+
+  .photoThumbnail {
+    width: 28px;
+    height: 28px;
   }
 }

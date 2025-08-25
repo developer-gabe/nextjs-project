@@ -63,11 +63,23 @@ const Finder = ({ initialPath = '/' }) => {
     
     if (fileName.endsWith('.jpg') || fileName.endsWith('.png') || fileName.endsWith('.gif')) {
       return (
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={styles.imageIcon}>
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-          <circle cx="8.5" cy="8.5" r="1.5"></circle>
-          <polyline points="21,15 16,10 5,21"></polyline>
-        </svg>
+        <div className={styles.photoPreview}>
+          <img
+            src={item.path}
+            alt={item.name}
+            className={styles.photoThumbnail}
+            onError={(e) => {
+              // Fallback to generic icon if image fails to load
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }}
+          />
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`${styles.imageIcon} ${styles.fallbackIcon}`} style={{display: 'none'}}>
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21,15 16,10 5,21"></polyline>
+          </svg>
+        </div>
       );
     }
     
