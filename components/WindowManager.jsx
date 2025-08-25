@@ -22,6 +22,7 @@ const WindowManager = () => {
           isMinimized={window.isMinimized}
           headerColor={window.headerColor}
           bringToFront={() => bringToFront(window.id)}
+          size={window.size} // pass initial size through
         >
           {window.component}
         </Window>
