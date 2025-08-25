@@ -1,8 +1,6 @@
 /* Window Component Styles - Clean and Organized */
 
-/* Window Component Styles - Clean and Organized */
-
-/* Main Window Container */
+/* ===== Main Window Container ===== */
 .windowContainer {
   position: absolute;
   display: flex;
@@ -11,10 +9,7 @@
   min-height: 200px;
   overflow: hidden;
   transition: box-shadow 0.2s ease;
-}
-
-/* Window Background - Frosted Glass Effect */
-.windowContainer {
+  /* Frosted backdrop */
   background: rgba(255, 255, 255, var(--window-bg-opacity));
   backdrop-filter: blur(var(--window-blur)) saturate(200%);
   -webkit-backdrop-filter: blur(var(--window-blur)) saturate(200%);
@@ -22,34 +17,35 @@
   border-radius: 16px;
 }
 
-/* Active Window Enhancements */
+/* Active / Inactive states */
 .windowContainer.active {
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.15), 
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
     0 0 0 1px rgba(255, 255, 255, 0.3) inset;
 }
 
-/* Inactive Window */
 .windowContainer.inactive {
-  box-shadow: 
-    0 10px 25px rgba(0, 0, 0, 0.1), 
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.1),
     0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }
 
-/* Resizing State */
+/* Resizing state */
 .windowContainer.resizing {
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.25), 
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.25),
     0 0 0 2px rgba(0, 123, 255, 0.4) inset;
   transition: none;
 }
 
-/* Maximized Window */
+/* Maximized window */
 .windowContainer.maximized {
   border-radius: 0;
+  /* iOS safe-area support when full screen */
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
-/* Title Bar */
+/* ===== Title Bar ===== */
 .titleBar {
   display: flex;
   align-items: center;
@@ -63,10 +59,8 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
-}
 
-/* Title Bar Background - Frosted Glass */
-.titleBar {
+  /* Frosted backdrop */
   background: rgba(255, 255, 255, var(--titlebar-bg-opacity));
   backdrop-filter: blur(var(--titlebar-blur)) saturate(200%);
   -webkit-backdrop-filter: blur(var(--titlebar-blur)) saturate(200%);
@@ -79,13 +73,13 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* Window Controls Container */
+/* ===== Window Controls ===== */
 .windowControls {
   display: flex;
   gap: 8px;
 }
 
-/* Individual Window Control Buttons */
+/* Individual Window Control Buttons (traffic lights) */
 .windowControl {
   width: 12px;
   height: 12px;
@@ -95,44 +89,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* We render × − + in the DOM for a11y, but hide visually to keep "dots" look */
   font-size: 8px;
   color: transparent;
+
   transition: all 0.2s ease;
 }
 
 /* Close Button */
-.windowControl.close {
-  background: #FF5F57;
-}
-
-.windowControl.close:hover {
-  color: rgba(255, 255, 255, 0.9);
-}
+.windowControl.close { background: #FF5F57; }
+.windowControl.close:hover { color: rgba(255, 255, 255, 0.9); }
 
 /* Minimize Button */
-.windowControl.minimize {
-  background: #FFBD2E;
-}
-
-.windowControl.minimize:hover {
-  color: rgba(0, 0, 0, 0.6);
-}
+.windowControl.minimize { background: #FFBD2E; }
+.windowControl.minimize:hover { color: rgba(0, 0, 0, 0.6); }
 
 /* Maximize Button */
-.windowControl.maximize {
-  background: #28CA42;
-}
+.windowControl.maximize { background: #28CA42; }
+.windowControl.maximize:hover { color: rgba(0, 0, 0, 0.6); }
 
-.windowControl.maximize:hover {
-  color: rgba(0, 0, 0, 0.6);
-}
+/* Inactive window controls */
+.windowControl.inactive { background: #ccc; }
 
-/* Inactive Window Controls */
-.windowControl.inactive {
-  background: #ccc;
-}
-
-/* Window Title */
+/* ===== Window Title ===== */
 .windowTitle {
   flex: 1;
   text-align: center;
@@ -140,28 +120,24 @@
   font-weight: 500;
   margin: 0 12px;
   transition: color 0.2s ease;
-}
-
-.windowTitle {
   color: #333;
 }
 
-.windowTitle.customHeader {
-  color: #ffffff;
-}
+.windowTitle.customHeader { color: #ffffff; }
 
-/* Window Content Area */
+/* ===== Window Content ===== */
 .windowContent {
   flex: 1;
   background: rgba(255, 255, 255, var(--content-bg-opacity));
   backdrop-filter: blur(var(--content-blur)) saturate(200%);
   -webkit-backdrop-filter: blur(var(--content-blur)) saturate(200%);
-  overflow: auto;
+  overflow: auto;                 /* scroll inside window */
+  -webkit-overflow-scrolling: touch; /* momentum scroll on iOS */
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Resize Handles */
+/* ===== Resize Handles ===== */
 .resizeHandle {
   position: absolute;
   background: transparent;
@@ -193,47 +169,67 @@
   z-index: 10;
 }
 
-/* Resize Corner Visual Indicator */
+/* Resize corner visual indicator */
 .resizeCorner {
   position: absolute;
   bottom: 2px;
   right: 2px;
   width: 12px;
   height: 12px;
-  background: linear-gradient(
-    -45deg, 
-    transparent 30%, 
-    rgba(0, 0, 0, 0.1) 30%, 
-    rgba(0, 0, 0, 0.1) 35%, 
-    transparent 35%, 
-    transparent 65%, 
-    rgba(0, 0, 0, 0.1) 65%, 
-    rgba(0, 0, 0, 0.1) 70%, 
-    transparent 70%
-  );
+  background:
+    linear-gradient(
+      -45deg,
+      transparent 30%,
+      rgba(0, 0, 0, 0.1) 30%,
+      rgba(0, 0, 0, 0.1) 35%,
+      transparent 35%,
+      transparent 65%,
+      rgba(0, 0, 0, 0.1) 65%,
+      rgba(0, 0, 0, 0.1) 70%,
+      transparent 70%
+    );
   pointer-events: none;
   border-radius: 0 0 16px 0;
 }
 
-/* Mobile Optimizations */
+/* ===== Mobile Optimizations ===== */
 @media (max-width: 768px) {
   .windowContainer {
     border-radius: 12px;
     min-width: 280px;
     min-height: 180px;
+    /* Softer shadow on mobile */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   }
-  
+
   .titleBar {
-    height: 44px;
+    height: 44px;         /* thumb-friendly */
     padding: 10px 14px;
+    /* prevent page scroll while dragging title bar on touch */
+    touch-action: none;
   }
-  
+
   .windowTitle {
     font-size: 13px;
   }
-  
-  .windowControl {
-    width: 14px;
-    height: 14px;
+
+  /* Bigger touch targets for controls on mobile */
+  .windowControls { gap: 6px; }
+  .windowControls .windowControl {
+    width: 18px;
+    height: 18px;
+    font-size: 16px; /* if you ever decide to show the glyphs */
+    line-height: 1;
+  }
+
+  /* Hide resize affordances on mobile; resizing is disabled in JS too */
+  .resizeHandle,
+  .resizeCorner {
+    display: none !important;
+  }
+
+  /* Ensure inner content can breathe below the iOS home indicator */
+  .windowContent {
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0));
   }
 }
