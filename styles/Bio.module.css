@@ -5,12 +5,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
   font-family: var(--font-family-system);
 }
 
 .aboutWindow {
-  background: #ffffff;
   padding: 40px 60px;
   display: flex;
   flex-direction: column;
@@ -124,7 +122,7 @@
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background: #f5f5f7;
+  background: var(--component-toolbar-bg);
   color: #1d1d1f;
   text-decoration: none;
   transition: all 0.15s ease;
@@ -136,7 +134,7 @@
 }
 
 .socialLink:hover {
-  background: #e8e8ed;
+  background: var(--component-hover-bg);
   transform: translateY(-1px);
 }
 

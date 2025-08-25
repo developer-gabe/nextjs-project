@@ -31,15 +31,15 @@ const TextEditor = () => {
       flexDirection: 'column',
       height: '100%',
       fontFamily: 'var(--font-family-system)',
-      background: '#ffffff'
+      background: 'var(--component-bg)'
     }}>
       {/* Toolbar */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
         padding: '8px 12px',
-        borderBottom: '1px solid #e5e5e5',
-        background: '#f6f6f6',
+        borderBottom: '1px solid var(--component-border)',
+        background: 'var(--component-toolbar-bg)',
         gap: '12px'
       }}>
         <label style={{ fontSize: '13px', color: '#1d1d1f' }}>
@@ -90,8 +90,8 @@ const TextEditor = () => {
             style={{
               padding: '4px 8px',
               fontSize: '12px',
-              background: '#ffffff',
-              border: '1px solid #d1d1d6',
+              background: 'var(--component-content-bg)',
+              border: '1px solid var(--component-border)',
               borderRadius: '4px',
               cursor: 'pointer'
             }}
@@ -103,8 +103,8 @@ const TextEditor = () => {
             style={{
               padding: '4px 8px',
               fontSize: '12px',
-              background: '#ffffff',
-              border: '1px solid #d1d1d6',
+              background: 'var(--component-content-bg)',
+              border: '1px solid var(--component-border)',
               borderRadius: '4px',
               cursor: 'pointer'
             }}
@@ -128,7 +128,7 @@ const TextEditor = () => {
           fontFamily: fontFamily,
           lineHeight: '1.5',
           color: '#1d1d1f',
-          background: '#ffffff'
+          background: 'var(--component-content-bg)'
         }}
         placeholder="Start typing..."
       />
@@ -136,8 +136,8 @@ const TextEditor = () => {
       {/* Status Bar */}
       <div style={{
         padding: '6px 12px',
-        borderTop: '1px solid #e5e5e5',
-        background: '#f6f6f6',
+        borderTop: '1px solid var(--component-border)',
+        background: 'var(--component-toolbar-bg)',
         fontSize: '11px',
         color: '#86868b',
         display: 'flex',

@@ -257,13 +257,13 @@ const Finder = ({ initialPath = '/' }) => {
             }}>
               {item.title || item.name}
             </div>
-            <div style={{ 
-              flex: 1, 
-              display: 'flex', 
-              alignItems: 'center', 
+            <div style={{
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
               justifyContent: 'center',
               padding: '20px',
-              background: '#ffffff'
+              background: 'var(--component-content-bg)'
             }}>
               <img 
                 src={item.path} 

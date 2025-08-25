@@ -3,15 +3,15 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #ffffff;
+  background: var(--component-bg);
   font-family: var(--font-family-system);
   padding: 0;
 }
 
 .blogListHeader {
   padding: 16px 20px 12px 20px;
-  border-bottom: 1px solid var(--border-color);
-  background: #ffffff;
+  border-bottom: 1px solid var(--component-border);
+  background: var(--component-toolbar-bg);
 }
 
 .blogListTitle {
@@ -27,7 +27,7 @@
   flex: 1;
   padding: 16px 20px;
   overflow-y: auto;
-  background: #ffffff;
+  background: var(--component-content-bg);
 }
 
 .blogPostsGrid {
@@ -45,13 +45,13 @@
   cursor: pointer;
   transition: all 0.15s ease;
   border: 1px solid transparent;
-  background: #ffffff;
+  background: var(--component-content-bg);
   user-select: none;
 }
 
 .blogPostItem:hover {
-  background: var(--tertiary-color);
-  border-color: var(--border-color);
+  background: var(--component-hover-bg);
+  border-color: var(--component-border);
 }
 
 .blogPostIcon {
@@ -94,39 +94,39 @@
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .blogListWindow {
-    background: #1e1e1e;
+    background: rgba(30, 30, 30, var(--window-bg-opacity));
   }
-  
+
   .blogListHeader {
-    background: #1e1e1e;
-    border-bottom-color: #424242;
+    background: rgba(30, 30, 30, var(--content-bg-opacity));
+    border-bottom-color: rgba(66, 66, 66, var(--border-opacity));
   }
-  
+
   .blogListTitle {
     color: #ffffff;
   }
-  
+
   .blogPostsContainer {
-    background: #1e1e1e;
+    background: rgba(30, 30, 30, var(--content-bg-opacity));
   }
-  
+
   .blogPostItem {
-    background: #1e1e1e;
+    background: rgba(30, 30, 30, var(--content-bg-opacity));
   }
-  
+
   .blogPostItem:hover {
-    background: #2d2d2d;
-    border-color: #424242;
+    background: rgba(45, 45, 45, 0.6);
+    border-color: rgba(66, 66, 66, var(--border-opacity));
   }
-  
+
   .blogPostIcon {
     color: #007aff;
   }
-  
+
   .blogPostTitle {
     color: #ffffff;
   }
-  
+
   .blogPostDate {
     color: #98989d;
   }
@@ -147,8 +147,8 @@
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background: #ffffff;
-  border: 1px solid var(--border-color);
+  background: var(--component-content-bg);
+  border: 1px solid var(--component-border);
   border-radius: 6px;
   cursor: pointer;
   font-size: 13px;
@@ -159,8 +159,8 @@
 }
 
 .backButton:hover {
-  background: var(--tertiary-color);
-  border-color: var(--quaternary-color);
+  background: var(--component-hover-bg);
+  border-color: var(--component-border);
 }
 
 .backButton svg {
@@ -179,13 +179,13 @@
   flex: 1;
   padding: 24px 32px;
   overflow-y: auto;
-  background: #ffffff;
+  background: var(--component-content-bg);
 }
 
 .blogPostHeader {
   margin-bottom: 32px;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--component-border);
 }
 
 .blogPostMainTitle {
@@ -315,46 +315,46 @@
 /* Dark mode support for blog post view */
 @media (prefers-color-scheme: dark) {
   .blogPostNavbar {
-    background: #2d2d2d;
-    border-bottom-color: #424242;
+    background: rgba(45, 45, 45, 0.8);
+    border-bottom-color: rgba(66, 66, 66, var(--border-opacity));
   }
-  
+
   .backButton {
-    background: #3a3a3c;
-    border-color: #545458;
+    background: rgba(58, 58, 60, var(--content-bg-opacity));
+    border-color: rgba(84, 84, 88, var(--border-opacity));
     color: #ffffff;
   }
-  
+
   .backButton:hover {
-    background: #48484a;
-    border-color: #6d6d70;
+    background: rgba(72, 72, 74, 0.6);
+    border-color: rgba(109, 109, 112, var(--border-opacity));
   }
-  
+
   .postNavTitle {
     color: #98989d;
   }
-  
+
   .blogPostContainer {
-    background: #1e1e1e;
+    background: rgba(30, 30, 30, var(--content-bg-opacity));
   }
-  
+
   .blogPostHeader {
-    border-bottom-color: #424242;
+    border-bottom-color: rgba(66, 66, 66, var(--border-opacity));
   }
-  
+
   .blogPostMainTitle {
     color: #ffffff;
   }
-  
+
   .blogPostMainDate,
   .blogPostReadingTime {
     color: #98989d;
   }
-  
+
   .blogPostContent {
     color: #ffffff;
   }
-  
+
   .blogPostContent h1,
   .blogPostContent h2,
   .blogPostContent h3,
@@ -363,15 +363,15 @@
   .blogPostContent h6 {
     color: #ffffff;
   }
-  
+
   .blogPostContent code {
-    background: #2d2d2d;
+    background: rgba(45, 45, 45, 0.6);
   }
-  
+
   .blogPostContent pre {
-    background: #2d2d2d;
+    background: rgba(45, 45, 45, 0.6);
   }
-  
+
   .blogPostContent blockquote {
     color: #98989d;
   }

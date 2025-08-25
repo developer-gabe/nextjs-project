@@ -30,14 +30,21 @@
 	--muted-color: #666666;
 	
 	/* Window System Variables */
-	--window-bg-opacity: 0.5;
+	--window-bg-opacity: 0.3;
 	--window-blur: 40px;
 	--titlebar-bg-opacity: 0.6;
 	--titlebar-blur: 30px;
 	--content-bg-opacity: 0.5;
-	--content-blur: 20px;
+	--content-blur: 40px;
 	--border-opacity: 0.08;
 	--shadow-opacity: 0.15;
+
+	/* Component Theme Variables - Consistent with Window */
+	--component-bg: rgba(255, 255, 255, var(--window-bg-opacity));
+	--component-content-bg: rgba(255, 255, 255, var(--content-bg-opacity));
+	--component-border: rgba(0, 0, 0, var(--border-opacity));
+	--component-toolbar-bg: rgba(246, 246, 246, 0.8);
+	--component-hover-bg: rgba(240, 240, 240, 0.6);
 	}
 	
 	/* Global Styles */
