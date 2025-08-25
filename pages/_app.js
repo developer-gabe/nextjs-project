@@ -24,7 +24,6 @@ function AppContent({ Component, pageProps }) {
   return (
     <>
       <WindowManager />  
-      <Navigation /> 
       <Component {...pageProps} />
       <Dock allPostsData={allPostsData} onOpenPost={handleOpenPost} />
     </>
@@ -45,7 +44,6 @@ function MyApp({ Component, pageProps }) {
 						<WindowProvider>
               <AppContent Component={Component} pageProps={pageProps} />
 						</WindowProvider>
-         		 <footer>GARAUXO.com | {new Date().getFullYear()}</footer>
             <Analytics />
         </>
     );
