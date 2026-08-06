@@ -39,7 +39,7 @@
   font-family: var(--font-family-system);
   font-size: 1.75rem;
   font-weight: 700;
-  color: #1d1d1f;
+  color: var(--primary-color);
   margin: 0 0 4px 0;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -48,7 +48,7 @@
 .version {
   font-family: var(--font-family-system);
   font-size: 13px;
-  color: #86868b;
+  color: var(--muted-color);
   margin: 0 0 24px 0;
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -64,7 +64,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 6px 0;
-  border-bottom: 1px solid #f5f5f7;
+  border-bottom: 1px solid var(--component-border);
 }
 
 .infoRow:last-child {
@@ -74,7 +74,7 @@
 .infoLabel {
   font-family: var(--font-family-system);
   font-size: 13px;
-  color: #1d1d1f;
+  color: var(--primary-color);
   font-weight: 500;
   letter-spacing: -0.01em;
   min-width: 100px;
@@ -83,7 +83,7 @@
 .infoValue {
   font-family: var(--font-family-system);
   font-size: 13px;
-  color: #1d1d1f;
+  color: var(--primary-color);
   font-weight: 400;
   letter-spacing: -0.01em;
   text-align: right;
@@ -92,14 +92,14 @@
 .bioSection {
   margin-bottom: 24px;
   padding-top: 16px;
-  border-top: 1px solid #f5f5f7;
+  border-top: 1px solid var(--component-border);
 }
 
 .bioText {
   font-family: var(--font-family-system);
   font-size: 13px;
   line-height: 1.5;
-  color: #1d1d1f;
+  color: var(--primary-color);
   margin: 0;
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -123,7 +123,7 @@
   gap: 6px;
   padding: 6px 12px;
   background: var(--component-toolbar-bg);
-  color: #1d1d1f;
+  color: var(--primary-color);
   text-decoration: none;
   transition: all 0.15s ease;
   font-weight: 500;

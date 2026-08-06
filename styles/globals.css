@@ -42,11 +42,30 @@
 	/* Component Theme Variables - Consistent with Window */
 	--component-bg: rgba(255, 255, 255, var(--window-bg-opacity));
 	--component-content-bg: rgba(255, 255, 255, var(--content-bg-opacity));
+	--component-titlebar-bg: rgba(255, 255, 255, var(--titlebar-bg-opacity));
 	--component-border: rgba(0, 0, 0, var(--border-opacity));
 	--component-toolbar-bg: rgba(246, 246, 246, 0.8);
 	--component-hover-bg: rgba(240, 240, 240, 0.6);
 	}
-	
+
+	/* Dark mode: flip the shared component tokens once, here, so every
+	   component using var(--component-*) / var(--primary-color) / etc.
+	   gets correct glass + text color automatically. */
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--primary-color: #ffffff;
+			--muted-color: #98989d;
+			--border-color: rgba(255, 255, 255, 0.12);
+			--tertiary-color: rgba(255, 255, 255, 0.08);
+			--component-bg: rgba(30, 30, 30, var(--window-bg-opacity));
+			--component-content-bg: rgba(30, 30, 30, var(--content-bg-opacity));
+			--component-titlebar-bg: rgba(30, 30, 30, var(--titlebar-bg-opacity));
+			--component-border: rgba(255, 255, 255, var(--border-opacity));
+			--component-toolbar-bg: rgba(45, 45, 45, 0.8);
+			--component-hover-bg: rgba(255, 255, 255, 0.08);
+		}
+	}
+
 	/* Global Styles */
 	body {
 	margin: auto;
