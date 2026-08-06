@@ -2,6 +2,7 @@
 title: 'TypeScript: Types & Interfaces'
 date: '2024-05-14'
 tags: ['typescript', 'types', 'interfaces']
+excerpt: "A beginner-friendly breakdown of TypeScript's Types and Interfaces, and how catching errors at compile time saves you from runtime surprises."
 ---
 
 TypeScript is certainly here to stay and in modern development setups it's nearly impossible to avoid. In this post I'll be breaking down some basic concepts of TypeScript, specifically Types & Interfaces and how they can benefit your codebase.

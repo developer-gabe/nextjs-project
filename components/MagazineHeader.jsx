@@ -92,7 +92,7 @@ export default function MagazineHeader({ allPostsData = [], showSearch = false }
 
             <nav className={`main-nav ${isMobileMenuOpen ? 'active' : ''}`}>
               {/* Desktop Navigation Links */}
-              <Link href='/posts' className='nav-link'>
+              <Link href='/?openBlog=true' className='nav-link'>
                 <span className='nav-text'>BLOG</span>
                 <span className='nav-underline'></span>
               </Link>
@@ -116,7 +116,7 @@ export default function MagazineHeader({ allPostsData = [], showSearch = false }
               
               {/* Mobile Menu List */}
               <div className='mobile-menu-list'>
-                <Link href='/posts' className='mobile-menu-link' onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href='/?openBlog=true' className='mobile-menu-link' onClick={() => setIsMobileMenuOpen(false)}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14,2 14,8 20,8"></polyline>
@@ -293,7 +293,7 @@ export default function MagazineHeader({ allPostsData = [], showSearch = false }
                   <ul className='search-results-list'>
                     {filteredPosts.slice(0, 8).map(({ id, date, title }) => (
                       <li key={id} className="search-result-item">
-                        <Link href={`/posts/${id}`} onClick={handleCloseSearch}>
+                        <Link href={`/?post=${id}`} onClick={handleCloseSearch}>
                           <span className='result-title'>{title}</span>
                           <span className='result-date'>
                             {new Date(new Date(date).setDate(new Date(date).getDate() + 1)).toLocaleDateString('en-US', {

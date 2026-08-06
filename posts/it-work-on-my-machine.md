@@ -2,6 +2,7 @@
 title: 'It Works on My Machine: Debugging Production bugs in NextJS'
 date: '2024-05-24'
 tags: ['javascript', 'nextjs', 'react', 'debugging']
+excerpt: 'A boolean prop worked perfectly in dev and staging, then broke in production. Here''s how I chased down the difference.'
 ---
 
 

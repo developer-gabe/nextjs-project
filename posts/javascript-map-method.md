@@ -2,6 +2,7 @@
 title: 'The .map() Method'
 date: '2023-03-19'
 tags: ['javascript', 'object', 'map']
+excerpt: 'A quick walkthrough of .map(), the immutable array method that transforms every element into a new array without touching the original.'
 ---
 
 If you're working with objects in JavaScript, you'll sometimes find yourself needing to transform an array into a new one with modified values.

@@ -2,6 +2,7 @@
 title: 'Running CSS Animations Once Per Session'
 date: '2020-07-18'
 tags: ['css', 'animation', 'session-storage', 'beginner']
+excerpt: "A homepage intro animation kept replaying every time a returning visitor loaded the page — here's how sessionStorage fixed it."
 ---
 
 I was working on some intro animations the other day for my site and had an idea to have a user land on the homepage, and the word “hello” would slide in from the left greeting them.

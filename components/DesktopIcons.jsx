@@ -3,7 +3,7 @@ import { useWindows } from '../lib/WindowContext';
 import BlogListWindow from './blog-list-window';
 import Finder from './Finder';
 
-const DesktopIcons = ({ allPostsData, onOpenPost, onOpenBio }) => {
+const DesktopIcons = ({ allPostsData, onOpenBio }) => {
   const { openWindow } = useWindows();
   const [draggedIcon, setDraggedIcon] = useState(null);
   const [iconPositions, setIconPositions] = useState({
@@ -15,7 +15,7 @@ const DesktopIcons = ({ allPostsData, onOpenPost, onOpenBio }) => {
   });
 
   const handleOpenBlogList = () => {
-    openWindow(<BlogListWindow allPostsData={allPostsData} onOpenPost={onOpenPost} />, "Blog Posts");
+    openWindow(<BlogListWindow allPostsData={allPostsData} />, "Blog Posts");
   };
 
   const handleOpenLabs = () => {

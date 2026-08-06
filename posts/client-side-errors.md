@@ -2,6 +2,7 @@
 title: 'Client Side Errors in NextJS'
 date: '2024-05-09'
 tags: ['javascript', 'nextjs', 'react', 'client-side-errors', 'debugging']
+excerpt: "Client-side errors don't show up on the Vercel dashboard like server-side ones do — here's how I track them down when a NextJS page breaks in the browser."
 ---
 
 

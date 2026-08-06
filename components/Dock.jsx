@@ -5,7 +5,7 @@ import BlogListWindow from './blog-list-window';
 import Finder from './Finder';
 import styles from '../styles/Dock.module.css';
 
-const Dock = ({ allPostsData = [], onOpenPost }) => {
+const Dock = ({ allPostsData = [] }) => {
   const { windows, bringToFront, restoreWindow, openWindow } = useWindows();
 
   const handleWindowClick = (windowId) => {
@@ -53,8 +53,8 @@ const Dock = ({ allPostsData = [], onOpenPost }) => {
         </svg>
       ),
       onClick: () => {
-        if (allPostsData && allPostsData.length > 0 && onOpenPost) {
-          openWindow(<BlogListWindow allPostsData={allPostsData} onOpenPost={onOpenPost} />, "Blog Posts");
+        if (allPostsData && allPostsData.length > 0) {
+          openWindow(<BlogListWindow allPostsData={allPostsData} />, "Blog Posts");
         } else {
           // Fallback for when blog data isn't available
           const SimpleBlogList = () => (

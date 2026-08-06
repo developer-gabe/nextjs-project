@@ -2,6 +2,7 @@
 title: 'JavaScript Memory Management: An intro'
 date: '2023-11-01'
 tags: ['javascript', 'memory-management', 'garbage-collection']
+excerpt: 'Garbage collection happens automatically in JavaScript, but understanding reachability and the roots it starts from makes you a better debugger.'
 ---
 
 If you've worked with JavaScript for a bit, you've likely heard the term "memory management". But what exactly does this mean in a language that's supposed to handle all that stuff for you? In this post, we're peeling back the layers of JavaScript's memory management, to try and understand a bit about what's going on.

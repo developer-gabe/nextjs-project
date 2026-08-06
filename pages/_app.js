@@ -1,31 +1,21 @@
 import App from 'next/app'
 import Head from 'next/head'
 import { Analytics } from "@vercel/analytics/react"
-import { WindowProvider, useWindows } from '../lib/WindowContext';
+import { WindowProvider } from '../lib/WindowContext';
 import WindowManager from '../components/WindowManager';
-import Navigation from '../components/Navigation';
 import Dock from '../components/Dock';
-import BlogPost from '../components/blog-post';
 import '../styles/globals.css'
-import '../styles/blog-post.css'
-import '../styles/blog-list.css'
 import 'prism-themes/themes/prism-shades-of-purple.css';
 
 function AppContent({ Component, pageProps }) {
-  const { openWindow } = useWindows();
-
-  const handleOpenPost = (post) => {
-    openWindow(<BlogPost post={post} />, post.title);
-  };
-
   // Try to get blog data from pageProps if available (like on home page)
   const allPostsData = pageProps.allPostsData || [];
 
   return (
     <>
-      <WindowManager />  
+      <WindowManager />
       <Component {...pageProps} />
-      <Dock allPostsData={allPostsData} onOpenPost={handleOpenPost} />
+      <Dock allPostsData={allPostsData} />
     </>
   );
 }

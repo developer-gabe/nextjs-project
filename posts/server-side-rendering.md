@@ -2,6 +2,7 @@
 title: 'Exploring the Benefits of Server-Side Rendering with Next.js'
 date: '2023-03-22'
 tags: ['javascript', 'nextjs', 'react', 'server-side-rendering']
+excerpt: "Diving into Next.js meant learning server-side rendering and hydration for the first time — what it is, and why it's faster than a blank HTML shell."
 ---
 
 So I finally dove straight into Next.js, thanks to my new job and as of late last week... my new blog! For the uninitiated - Next is a framework that extends React to allow for server-side rendering. Server-side rendering is the process of rendering your React components _on the server_ and sending the fully rendered HTML to the client, rather than traditional way of sending an empty HTML file that gets it's content filled in by JavaScript once it's downloaded.
